@@ -32,7 +32,6 @@
     "@biomejs/biome": "1.8.2",
     "@manypkg/cli": "^0.21.4",
     "@supabase/supabase-js": "2.42.7",
-    "@supabase/supabase-js": "2.42.7",
     "turbo": "2.0.4",
     "typescript": "^5.5.2"
   },

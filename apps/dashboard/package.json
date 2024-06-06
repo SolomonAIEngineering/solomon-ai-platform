@@ -19,8 +19,6 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "start-database": "make start-database"
-    "typecheck": "tsc --noEmit",
-    "start-database": "make start-database"
   },
   "dependencies": {
     "@ai-sdk/mistral": "^0.0.17",
