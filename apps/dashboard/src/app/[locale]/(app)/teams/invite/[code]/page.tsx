@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { revalidateTag } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Join team | Solomon AI",
@@ -27,40 +28,24 @@ export default async function InviteCode({ params }) {
 
   return (
     <div>
-      <div className="absolute left-5 top-4 md:left-10 md:top-10">
-        <Link href="/">
-          <Icons.Logo />
-        </Link>
-      </div>
+      <header className="w-full absolute left-0 right-0 flex justify-between items-center">
+        <div className="ml-5 mt-4 md:ml-10 md:mt-10">
+          <Link href="/">
+            <Icons.Logo />
+          </Link>
+        </div>
+
+        <div className="mr-5 mt-4 md:mr-10 md:mt-10">
+          <Suspense>
+            <UserMenu onlySignOut />
+          </Suspense>
+        </div>
+      </header>
 
       <div className="flex min-h-screen justify-center items-center overflow-hidden p-6 md:p-0">
         <div className="relative z-20 m-auto flex w-full max-w-[380px] flex-col">
           <div className="flex w-full flex-col relative">
-            <div className="w-[2px] h-[2px] bg-primary rounded-full absolute -top-[20px] -left-[100px] animate-[pulse_2s_ease-in-out_infinite]" />
-            <div className="w-[3px] h-[3px] bg-primary rounded-full absolute -top-[70px] left-[5%] animate-[pulse_2s_ease-in-out_infinite]" />
-            <div
-              className="w-[5px] h-[5px] bg-primary rounded-full absolute -top-[120px] left-[80px] animate-[pulse_2s_ease-in-out_infinite]"
-              style={{ animationDelay: "500ms" }}
-            />
-            <div
-              className="w-[5px] h-[5px] bg-primary rounded-full absolute -top-[80px] left-[180px] animate-[pulse_2s_ease-in-out_infinite]"
-              style={{ animationDelay: "0ms" }}
-            />
-            <div
-              className="w-[3px] h-[3px] bg-[#FFD02B] rounded-full absolute -top-[20px] -right-[40px] animate-[pulse_2s_ease-in-out_infinite]"
-              style={{ animationDelay: "200ms" }}
-            />
-            <div
-              className="w-[2px] h-[2px] bg-primary rounded-full absolute -top-[100px] -right-[100px] animate-[pulse_2s_ease-in-out_infinite]"
-              style={{ animationDelay: "2s" }}
-            />
-
-            <div
-              className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[80px] -right-[100px] animate-[pulse_2s_ease-in-out_infinite]"
-              style={{ animationDelay: "0ms" }}
-            />
-
-            <div className="pb-4 bg-gradient-to-r from-primary dark:via-primary dark:to-[#848484] to-[#000] inline-block text-transparent bg-clip-text">
+            <div className="pb-4">
               <h1 className="font-medium pb-1 text-3xl">
                 Invite link has expired
               </h1>
