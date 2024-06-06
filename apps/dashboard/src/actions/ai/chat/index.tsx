@@ -8,7 +8,6 @@ import {
   getUser,
 } from "@solomon/supabase/cached-queries";
 import { Ratelimit } from "@upstash/ratelimit";
-import { nanoid } from "ai";
 import {
   createAI,
   createStreamableValue,
@@ -16,6 +15,7 @@ import {
   streamUI,
 } from "ai/rsc";
 import { startOfMonth, subMonths } from "date-fns";
+import { nanoid } from "nanoid";
 import { headers } from "next/headers";
 import { getAssistantSettings, saveChat } from "../storage";
 import type { AIState, Chat, ClientMessage, UIState } from "../types";
@@ -104,7 +104,7 @@ export async function submitUserMessage(
     model,
     initial: <SpinnerMessage />,
     system: `\
-    You are a helful asssitant in Midday that can help users ask questions around their transactions, revenue, spending find invoices and more.
+    You are a helful asssitant on Solomon AI that can help users ask questions around their transactions, revenue, spending find invoices and more.
 
     If the user wants to see spending, call \`getSpending\` function.
     If the user just wants the burn rate, call \`getBurnRate\` function.

@@ -20,9 +20,9 @@
 
 # Get started
 
-We are working on the documentation to get started with Midday for local development: https://docs.midday.ai/local-development
+We are working on the documentation to get started with Midday for local development: https://docs.midday.ai
 
-# App Architecture
+## App Architecture
 
 - Monorepo
 - Bun

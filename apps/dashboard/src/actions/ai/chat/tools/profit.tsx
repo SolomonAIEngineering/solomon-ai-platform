@@ -2,6 +2,7 @@ import type { MutableAIState } from "@/actions/ai/types";
 import { getMetrics } from "@solomon/supabase/cached-queries";
 import { nanoid } from "ai";
 import { startOfMonth } from "date-fns";
+import { nanoid } from "nanoid";
 import { z } from "zod";
 import { ProfitUI } from "./ui/profit-ui";
 

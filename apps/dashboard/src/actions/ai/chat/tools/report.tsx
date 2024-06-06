@@ -3,7 +3,7 @@ import { createClient } from "@solomon/supabase/server";
 import { nanoid } from "ai";
 import { startOfMonth } from "date-fns";
 import { Dub } from "dub";
-// import { nanoid } from "ai";
+import { nanoid } from "nanoid";
 import { z } from "zod";
 import { ReportUI } from "./ui/report-ui";
 

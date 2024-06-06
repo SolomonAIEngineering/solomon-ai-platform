@@ -7,6 +7,8 @@ import { deleteUser } from "@solomon/supabase/mutations";
 import { createClient } from "@solomon/supabase/server";
 import { redirect } from "next/navigation";
 
+const loops = new LoopsClient(process.env.LOOPS_API_KEY!);
+
 export const deleteUserAction = async () => {
   const supabase = createClient();
   const user = await getUser();
@@ -26,6 +28,8 @@ export const deleteUserAction = async () => {
   }
 
   const userId = await deleteUser(supabase);
+
+  await loops.deleteContact({ userId });
 
   const analytics = await setupAnalytics({
     userId,

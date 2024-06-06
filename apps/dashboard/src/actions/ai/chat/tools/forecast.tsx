@@ -3,6 +3,7 @@ import { getMetrics } from "@solomon/supabase/cached-queries";
 import { nanoid } from "ai";
 import { generateText } from "ai";
 import { startOfMonth } from "date-fns";
+import { nanoid } from "nanoid";
 import { z } from "zod";
 import { selectModel } from "..";
 import { ForecastUI } from "./ui/forecast-ui";

@@ -10,14 +10,12 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
-import * as React from "react";
 import { Footer } from "../components/footer";
 import { GetStarted } from "../components/get-started";
 import { Logo } from "../components/logo";
 
-interface OverviewProps {
+interface WelcomeProps {
   fullName: string;
-  unsubscribeLink: string;
 }
 
 const baseUrl =
@@ -81,7 +79,7 @@ export const WelcomeEmail = ({
               decisions to help run your business smarter.
               <br />
               <br />
-              During our private beta phase, you may encounter some bugs, but we
+              During our beta phase, you may encounter some bugs, but we
               genuinely want all your feedback.
               <br />
               <br />
@@ -113,7 +111,7 @@ export const WelcomeEmail = ({
 
             <br />
 
-            <Footer baseUrl={baseUrl} unsubscribeLink={unsubscribeLink} />
+            <Footer baseUrl={baseUrl} />
           </Container>
         </Body>
       </Tailwind>

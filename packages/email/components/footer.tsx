@@ -7,16 +7,13 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-
-import React from "react";
 import { TripleColumn } from "responsive-react-email";
 
 type Props = {
   baseUrl?: string;
-  unsubscribeLink?: string;
 };
 
-export function Footer({ baseUrl, unsubscribeLink }: Props) {
+export function Footer({ baseUrl }: Props) {
   return (
     <Section className="w-full">
       <Hr />
@@ -36,14 +33,15 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
         columnOneContent={
           <Section className="text-left p-0 m-0">
             <Row>
-              <Text className="font-medium">Product</Text>
+              <Text className="font-medium">Features</Text>
             </Row>
+
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
                 href="https://solomon-ai.app"
               >
-                Homepage
+                Overview
               </Link>
             </Row>
             <Row className="mb-1.5">
@@ -51,7 +49,7 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
                 className="text-[#707070] text-[14px]"
                 href="https://solomon-ai.app/pricing"
               >
-                Pricing
+                Inbox
               </Link>
             </Row>
             <Row className="mb-1.5">
@@ -59,7 +57,7 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
                 className="text-[#707070] text-[14px]"
                 href="https://solomon-ai.app/story"
               >
-                Story
+                Vault
               </Link>
             </Row>
             <Row className="mb-1.5">
@@ -67,15 +65,25 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
                 className="text-[#707070] text-[14px]"
                 href="https://solomon-ai.app/updates"
               >
-                Updates
+                Invoice
               </Link>
             </Row>
+
+            <Row className="mb-1.5">
+              <Link
+                className="text-[#707070] text-[14px]"
+                href="https://go.midday.ai/dEnP9h5"
+              >
+                Pricing
+              </Link>
+            </Row>
+
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
                 href="https://solomon-ai.app/download"
               >
-                Download
+                Engine
               </Link>
             </Row>
 
@@ -84,7 +92,7 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
                 className="text-[#707070] text-[14px]"
                 href="https://solomon-ai.app/feature-request"
               >
-                Feature Request
+                Download
               </Link>
             </Row>
           </Section>

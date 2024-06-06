@@ -1,5 +1,8 @@
 import { Img, Section } from "@react-email/components";
-import React from "react";
+
+type Props = {
+  baseUrl: string;
+};
 
 interface LogoProps {
   baseUrl: string;
