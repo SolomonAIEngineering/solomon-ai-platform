@@ -4,7 +4,7 @@ import { Events, Jobs } from "../constants";
 
 const concurrencyLimit = client.defineConcurrencyLimit({
   id: "inbox-upload",
-  limit: 25,
+  limit: 10,
 });
 
 client.defineJob({
@@ -20,7 +20,6 @@ client.defineJob({
         bucket_id: ["vault"],
         path_tokens: [
           {
-            // NOTE: This ensures jobs run only for files uploaded through the inbox bulk upload.
             $includes: "uploaded",
           },
         ],
@@ -35,9 +34,19 @@ client.defineJob({
     const teamId = path_tokens.at(0);
     const filename = path_tokens.at(-1);
 
+    const { data: foundRecord } = await io.supabase.client
+      .from("inbox")
+      .select("id")
+      .contains("file_path", path_tokens)
+      .single();
+
+    if (foundRecord) {
+      throw Error("Record already exists");
+    }
+
     const { data: inboxData } = await io.supabase.client
       .from("inbox")
-      .insert({
+      .upsert({
         // NOTE: If we can't parse the name using OCR this will be the fallback name
         display_name: filename,
         team_id: teamId,
