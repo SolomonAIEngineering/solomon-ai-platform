@@ -46,7 +46,7 @@ client.defineJob({
         WelcomeEmail({
           fullName: payload.fullName,
           unsubscribeLink,
-        })
+        }),
       ),
       headers: {
         "X-Entity-Ref-ID": nanoid(),

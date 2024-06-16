@@ -98,6 +98,7 @@ export const transformTransaction = ({
     team_id: teamId,
     balance: transaction.running_balance,
     status: transaction?.status === "posted" ? "posted" : "pending",
+    account_id: transaction?.account_id,
   };
 };
 
