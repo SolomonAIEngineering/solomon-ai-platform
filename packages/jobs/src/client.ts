@@ -16,7 +16,8 @@ export const supabase = new Supabase<Database>({
 });
 
 const supabaseManagement = new SupabaseManagement({
-  id: "midday-supabase-management",
+  id: "supabase-management",
+  apiKey: process.env.SUPABASE_API_KEY!,
 });
 
 export const db = supabaseManagement.db(
