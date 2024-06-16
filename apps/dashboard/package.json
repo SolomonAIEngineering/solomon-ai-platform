@@ -5,12 +5,13 @@
   "scripts": {
     "build": "NODE_ENV=production next build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "jobs": "bunx @trigger.dev/cli@latest dev -p 3001 --client-id=midday-G6Yq",
+    "jobs": "bunx @trigger.dev/cli@latest dev -p 3001 --client-id=solomon-ai-OEsD",
     "dev": "next dev -p 3001",
     "lint": "next lint",
     "format": "biome format --write .",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "start-database": "make start-database"
   },
   "dependencies": {
     "@ai-sdk/mistral": "^0.0.17",
