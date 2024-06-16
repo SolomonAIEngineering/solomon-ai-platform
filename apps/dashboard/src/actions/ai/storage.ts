@@ -78,6 +78,11 @@ export async function getLatestChat() {
 
   const userId = session?.user.id;
 
+  if (!userId) {
+    console.error('User ID is null or undefined.');
+    return null;
+  }
+
   try {
     const chat: string[] = await RedisClient.zrange(
       `user:chat:${userId}`,
@@ -88,8 +93,21 @@ export async function getLatestChat() {
       }
     );
 
-    return RedisClient.hgetall(chat.at(0));
+    if (chat.length === 0) {
+      console.error('No chat found for the user.');
+      return null;
+    }
+
+    const chatKey = chat.at(0);
+
+    if (!chatKey) {
+      console.error('Chat key is null or undefined.');
+      return null;
+    }
+
+    return await RedisClient.hgetall(chatKey);
   } catch (error) {
+    console.error('Error fetching chat:', error);
     return null;
   }
 }
