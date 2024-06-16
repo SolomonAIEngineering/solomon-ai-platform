@@ -1,11 +1,15 @@
--- Trigger to call the function after a new user is created in auth.users
-CREATE TRIGGER on_auth_user_created
-AFTER INSERT ON auth.users
-FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
-
 -- Alter the transactions table to ensure that we account for new columns specifically originating in the providers
 ALTER TABLE "public"."transactions"
-    ADD COLUMN IF NOT EXISTS "account_id" "text" NOT NULL,
+    ADD COLUMN IF NOT EXISTS "account_id" "text";
+
+UPDATE "public"."transactions"
+SET "account_id" = ''
+WHERE "account_id" IS NULL;
+
+ALTER TABLE "public"."transactions"
+ALTER COLUMN "account_id" SET NOT NULL;
+
+ALTER TABLE "public"."transactions"
     ADD COLUMN IF NOT EXISTS "account_owner" "text",
     ADD COLUMN IF NOT EXISTS "iso_currency_code" "text",
     ADD COLUMN IF NOT EXISTS "unofficial_currency_code" "text",
