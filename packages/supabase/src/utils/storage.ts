@@ -84,6 +84,7 @@ export async function createFolder(
     [...path, name, EMPTY_FOLDER_PLACEHOLDER_FILE_NAME].join("/")
   );
 
+
   const { error, data } = await client.storage
     .from(bucket)
     .upload(fullPath, new File([], EMPTY_FOLDER_PLACEHOLDER_FILE_NAME));
