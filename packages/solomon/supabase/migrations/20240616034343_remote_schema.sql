@@ -48,3 +48,11 @@ ALTER TABLE "public"."transactions"
 ALTER TABLE public.transactions
 ADD COLUMN IF NOT EXISTS inserted_at TIMESTAMPTZ DEFAULT now();
 
+-- Use Postgres to create a bucket.
+insert into storage.buckets
+  (id, name, public)
+values
+  ('vault', 'vault', true);
+
+-- Create a policy that allows users to upload files to the vault bucket.
+CREATE POLICY "allow uploads" ON storage.objects FOR INSERT TO public WITH CHECK (bucket_id = 'vault')

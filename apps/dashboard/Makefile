@@ -27,14 +27,14 @@ create-supabase-dir:
 copy-migrations: create-migrations-dir
 	@echo "Creating migrations directory if it doesn't exist..."
 	@mkdir -p supabase/migrations
-	@echo "Copying migration files from ../../packages/supabase/migrations to supabase/migrations..."
-	@cp -r ../../packages/supabase/migrations/* supabase/migrations/
+	@echo "Copying migration files from ../../packages/solomon/supabase/migrations to supabase/migrations..."
+	@cp -r ../../packages/solomon/supabase/migrations/* supabase/migrations/
 	@echo "Migration files copied."
 
 .PHONY: copy-config-file
 copy-config-file:
-	@echo "Copying config file from ../../packages/supabase/config.toml to supabase/config.toml..."
-	@cp ../../packages/supabase/config.toml supabase/config.toml
+	@echo "Copying config file from ../../packages/solomon/supabase/config.toml to supabase/config.toml..."
+	@cp ../../packages/solomon/supabase/config.toml supabase/config.toml
 	@echo "Config file copied."
 
 # Convenience target to run both commands
