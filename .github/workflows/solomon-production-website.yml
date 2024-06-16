@@ -12,7 +12,6 @@ on:
       - apps/solomon/public-site/**
       - packages/**
       - "!packages/email/**"
-      - packages/solomon/**
 jobs:
   deploy-production:
     runs-on: ubuntu-latest
