@@ -140,6 +140,7 @@ export const transformTransaction = ({
       transaction?.balanceAfterTransaction?.balanceAmount?.amount || null,
     description: transformDescription({ transaction, name }),
     status: "posted",
+    account_id: bankAccountId || null,
   };
 };
 

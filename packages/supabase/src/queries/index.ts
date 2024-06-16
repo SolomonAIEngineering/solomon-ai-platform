@@ -521,11 +521,11 @@ export async function getVaultQuery(supabase: Client, params: GetVaultParams) {
   const defaultFolders = path
     ? []
     : [
-        { name: "exports", isFolder: true },
-        { name: "inbox", isFolder: true },
-        { name: "imports", isFolder: true },
-        { name: "transactions", isFolder: true },
-      ];
+      { name: "exports", isFolder: true },
+      { name: "inbox", isFolder: true },
+      { name: "imports", isFolder: true },
+      { name: "transactions", isFolder: true },
+    ];
 
   let basePath = teamId;
 
@@ -589,7 +589,7 @@ export async function getVaultRecursiveQuery(
   const items = [];
   let folderContents: any = [];
 
-  for (;;) {
+  for (; ;) {
     const { data } = await supabase.storage.from("vault").list(basePath);
 
     folderContents = folderContents.concat(data);
