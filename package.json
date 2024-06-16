@@ -5,8 +5,9 @@
     "packages/*",
     "apps/*",
     "packages/email/*",
-    "packages/solomon-ai/*",
-    "apps/solomon/*"
+    "packages/solomon/*",
+    "apps/solomon/*",
+    "packages/solomon/config/*"
   ],
   "scripts": {
     "build": "turbo build",
