@@ -44,3 +44,7 @@ ALTER TABLE "public"."transactions"
     ADD COLUMN IF NOT EXISTS "transaction_id" "text",
     ADD COLUMN IF NOT EXISTS "transaction_code" "text",
     ADD COLUMN IF NOT EXISTS "transaction_type" "text";
+
+ALTER TABLE public.transactions
+ADD COLUMN IF NOT EXISTS inserted_at TIMESTAMPTZ DEFAULT now();
+

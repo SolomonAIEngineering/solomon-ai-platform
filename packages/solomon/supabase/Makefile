@@ -64,6 +64,14 @@ supabase-restart: exportenv ## Restart Supabase
 	@supabase start
 	@echo "Supabase restarted."
 
+
+.PHONY: restart-clickhouse
+restart-clickhouse: ## Restart ClickHouse
+	@echo "Restarting ClickHouse..."
+	@docker-compose -f docker-compose.clickhouse.yaml down
+	@docker-compose -f docker-compose.clickhouse.yaml up -d
+	@echo "ClickHouse restarted."
+
 .PHONY: supabase-dev
-supabase-dev: supabase-restart supabase-migrate ## Run Supabase in dev mode
+supabase-dev: start-docker restart-clickhouse supabase-restart supabase-migrate ## Run Supabase in dev mode
 	open http://127.0.0.1:54323
