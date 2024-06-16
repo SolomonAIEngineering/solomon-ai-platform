@@ -93,19 +93,11 @@ export async function getLatestChat() {
       }
     );
 
-    if (chat.length === 0) {
-      console.error('No chat found for the user.');
-      return null;
+    const lastId = chat.at(0);
+
+    if (lastId) {
+      return RedisClient.hgetall(lastId);
     }
-
-    const chatKey = chat.at(0);
-
-    if (!chatKey) {
-      console.error('Chat key is null or undefined.');
-      return null;
-    }
-
-    return await RedisClient.hgetall(chatKey);
   } catch (error) {
     console.error('Error fetching chat:', error);
     return null;
