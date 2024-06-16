@@ -1,0 +1,23 @@
+{
+  "tasks": {
+    "esm:add": "deno run -A https://esm.sh/v135 add",
+    "esm:update": "deno run -A https://esm.sh/v135 update",
+    "esm:remove": "deno run -A https://esm.sh/v135 remove"
+  },
+  "imports": {
+    "react": "https://esm.sh/v135/preact@10.22.0/compat",
+    "react-dom": "https://esm.sh/v135/*react-dom@18.3.1",
+    "react-dom/": "https://esm.sh/v135/*react-dom@18.3.1/",
+    "supabase/functions-js": "https://esm.sh/v135/*supabase@1.176.10/functions-js"
+  },
+  "scopes": {
+    "https://esm.sh/v135/": {
+      "bin-links": "https://esm.sh/v135/bin-links@4.0.4",
+      "https-proxy-agent": "https://esm.sh/v135/https-proxy-agent@7.0.4",
+      "loose-envify": "https://esm.sh/v135/loose-envify@1.4.0",
+      "node-fetch": "https://esm.sh/v135/node-fetch@3.3.2",
+      "scheduler": "https://esm.sh/v135/scheduler@0.23.2",
+      "tar": "https://esm.sh/v135/tar@7.2.0"
+    }
+  }
+}
