@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - apps/solomon/website/**
+      - apps/solomon/public-site/**
       - packages/**
       - "!packages/email/**"
       - packages/solomon/**
