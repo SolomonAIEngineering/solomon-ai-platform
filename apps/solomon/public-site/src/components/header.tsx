@@ -26,7 +26,6 @@ import {
   MdOutlineIntegrationInstructions,
   MdOutlineMemory,
 } from "react-icons/md";
-import { LogoIcon } from "./logo-icon";
 
 const listVariant = {
   show: {
@@ -349,8 +348,8 @@ export function Header() {
         >
           <div className="mt-4 flex justify-between p-3 px-4 relative">
             <button type="button" onClick={handleToggleMenu}>
-              <span className="sr-only">Midday Logo</span>
-              <LogoIcon />
+              <span className="sr-only">Solomon AI Logo</span>
+              <Icons.Logo />
             </button>
 
             <button
