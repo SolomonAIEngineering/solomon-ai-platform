@@ -40,12 +40,12 @@ const baseAppUrl =
 
 export const InviteEmail = ({
   invitedByEmail = "bukinoshita@example.com",
-  invitedByName = "Pontus Abrahamsson",
-  email = "pontus@lostisland.co",
+  invitedByName = "Solomon AI Team",
+  email = "engineering@solomon-ai.co",
   teamName = "Acme Co",
   inviteCode = "jnwe9203frnwefl239jweflasn1230oqef",
   ip = "204.13.186.218",
-  location = "São Paulo, Brazil",
+  location = "New York",
   locale = "en",
 }: InviteEmailProps) => {
   const { t } = getI18n({ locale });
@@ -87,7 +87,7 @@ export const InviteEmail = ({
             <Logo baseUrl={baseUrl} />
             <Heading className="mx-0 my-[30px] p-0 text-[24px] font-normal text-[#121212] text-center">
               {t("invite.title1")} <strong>{teamName}</strong>{" "}
-              {t("invite.title2")} <strong>Midday</strong>
+              {t("invite.title2")} <strong>Solomon AI</strong>
             </Heading>
 
             <Text className="text-[14px] leading-[24px] text-[#121212]">
@@ -99,7 +99,7 @@ export const InviteEmail = ({
                 {invitedByEmail}
               </Link>
               ) {t("invite.link1")} <strong>{teamName}</strong>{" "}
-              {t("invite.link2")} <strong>Midday</strong>.
+              {t("invite.link2")} <strong>Solomon AI</strong>.
             </Text>
             <Section className="mb-[42px] mt-[32px] text-center">
               <Button

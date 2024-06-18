@@ -28,11 +28,11 @@ const baseUrl =
     : "http://localhost:3000/email";
 
 export const PreAccountingEmail = ({
-  fullName = "Viktor Hofte",
+  fullName = "Solomon AI Team",
   unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
-  const text = `Hi ${firstName}, Always have to dig up old receipts and invoices when your accountant asks for it? No more, with Midday everything is gathered, neatly structured and connected to transactions.`;
+  const text = `Hi ${firstName}, Always have to dig up old receipts and invoices when your accountant asks for it? No more, with Solomon AI everything is gathered, neatly structured and connected to transactions.`;
 
   return (
     <Html>
@@ -86,7 +86,7 @@ export const PreAccountingEmail = ({
             <span className="font-medium">Hi {firstName},</span>
             <Text className="text-[#121212]">
               Always have to dig up old receipts and invoices when your
-              accountant asks for it? No more, with Midday everything is
+              accountant asks for it? No more, with Solomon AI everything is
               gathered, neatly structured and connected to transactions.
             </Text>
 
@@ -96,7 +96,7 @@ export const PreAccountingEmail = ({
             <Section>
               <Column
                 title="Categorize your transactions"
-                description="Many transactions will automatically be categorized when added to Midday but sometimes you have to do it yourself. Midday will learn and be better with time. Everything to be able show better and better spending data."
+                description="Many transactions will automatically be categorized when added to Solomon AI but sometimes you have to do it yourself. Solomon AI will learn and be better with time. Everything to be able show better and better spending data."
                 imgSrc={`${baseUrl}/pre-accounting-categories.png`}
               />
 
@@ -108,7 +108,7 @@ export const PreAccountingEmail = ({
 
               <Column
                 title="Export to your accountant"
-                description="Select any timeframe you want and export your transactions, now with the attached receipt or invoice. Midday will also notify you if you export something has a missing attachment."
+                description="Select any timeframe you want and export your transactions, now with the attached receipt or invoice. Solomon AI will also notify you if you export something has a missing attachment."
                 imgSrc={`${baseUrl}/pre-accounting-export.png`}
               />
             </Section>

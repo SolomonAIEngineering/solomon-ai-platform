@@ -27,7 +27,7 @@ const baseUrl =
     : "http://localhost:3000/email";
 
 export const GetStartedEmail = ({
-  fullName = "Viktor Hofte",
+  fullName = "Solomon AI Team",
   unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
@@ -68,7 +68,7 @@ export const GetStartedEmail = ({
           >
             <Logo baseUrl={baseUrl} />
             <Heading className="text-[#121212] text-[21px] font-normal text-center p-0 my-[30px] mx-0">
-              Get started with Midday
+              Get started with Solomon AI
             </Heading>
 
             <br />
@@ -93,7 +93,7 @@ export const GetStartedEmail = ({
             <Section>
               <Column
                 title="Invite your team"
-                description="Invite your team or a collegue that you think should have access to Midday."
+                description="Invite your team or a colleague that you think should have access to Solomon AI."
                 imgSrc={`${baseUrl}/get-started-invite.png`}
               />
 
@@ -105,13 +105,13 @@ export const GetStartedEmail = ({
 
               <Column
                 title="Run your bussiness smarter"
-                description="Midday helps you see your bussiness full financial picture, track your projects with ease, see forecasted earnings, store important documents and takes the hassle out of preparing exports for your accountant"
+                description="Solomon AI helps you see your business full financial picture, track your projects with ease, see forecasted earnings, store important documents and takes the hassle out of preparing exports for your accountant"
                 imgSrc={`${baseUrl}/get-started-overview.png`}
               />
 
               <Column
                 title="Download Mac app"
-                description="We like apps alot so we made Midday into one. We’ve tailored it as much as we can for a native experince but feel free to reach out if you find bugs or parts we can do better."
+                description="We like apps alot so we made Solomon AI into one. We’ve tailored it as much as we can for a native experience but feel free to reach out if you find bugs or parts we can do better."
                 imgSrc={`${baseUrl}/get-started-download.png`}
               />
             </Section>

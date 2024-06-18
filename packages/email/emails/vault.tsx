@@ -27,7 +27,7 @@ const baseUrl =
     : "http://localhost:3000/email";
 
 export const VaultEmail = ({
-  fullName = "Viktor Hofte",
+  fullName = "Solomon AI Team",
   unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
@@ -106,7 +106,7 @@ export const VaultEmail = ({
 
               <Column
                 title="Have everything in one place"
-                description="Instead of having important documents scattered locally or on different drives, store them safely in Midday."
+                description="Instead of having important documents scattered locally or on different drives, store them safely in Solomon AI."
                 imgSrc={`${baseUrl}/vault-overview.png`}
               />
             </Section>
