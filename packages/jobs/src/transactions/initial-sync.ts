@@ -33,6 +33,7 @@ client.defineJob({
     });
 
     try {
+
       // NOTE: Schedule a background job per team_id
       await scheduler.register(teamId, {
         type: "interval",
