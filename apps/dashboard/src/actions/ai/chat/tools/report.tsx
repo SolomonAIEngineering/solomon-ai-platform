@@ -65,7 +65,7 @@ export function createReport({
         .single();
 
       const link = await dub.links.create({
-        url: `https://app.midday.ai/report/${data.id}`,
+        url: `https://app.solomon-ai.app/report/${data.id}`,
         expiresAt,
         rewrite: true,
       });
