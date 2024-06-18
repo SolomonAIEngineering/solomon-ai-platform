@@ -1,4 +1,4 @@
-name: Upload to Web Store
+name: Solomon | Upload to Web Store
 on:
   push:
     tags:
