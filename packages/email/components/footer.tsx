@@ -24,7 +24,7 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
       <br />
 
       <Text className="text-[21px] font-regular">
-        Run your business smarter.
+        Proactive Stress Testing For Your Practice.
       </Text>
 
       <br />
@@ -93,6 +93,30 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
         columnTwoContent={
           <Section className="text-left p-0 m-0">
             <Row>
+              <Text className="font-medium">Terms</Text>
+            </Row>
+            <Row className="mb-1.5">
+              <Link
+                className="text-[#707070] text-[14px]"
+                href="https://solomon-ai.app/terms"
+              >
+                Terms of service
+              </Link>
+            </Row>
+            <Row className="mb-1.5">
+              <Link
+                className="text-[#707070] text-[14px]"
+                href="https://solomon-ai.app/policy"
+              >
+                Privacy policy
+              </Link>
+            </Row>
+          </Section>
+        }
+        columnTwoStyles={{ paddingRight: 0, paddingLeft: 0, width: 185 }}
+        columnThreeContent={
+          <Section className="text-left p-0 m-0">
+            <Row>
               <Text className="font-medium">Resources</Text>
             </Row>
             <Row className="mb-1.5">
@@ -114,46 +138,9 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://solomon-ai.app/support"
-              >
-                Support
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://solomon-ai.app/terms"
-              >
-                Terms of service
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://solomon-ai.app/policy"
-              >
-                Privacy policy
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
                 href="https://app.solomon-ai.app/account/support"
               >
                 Support
-              </Link>
-            </Row>
-          </Section>
-        }
-        columnTwoStyles={{ paddingRight: 0, paddingLeft: 0, width: 185 }}
-        columnThreeContent={
-          <Section className="text-left p-0 m-0">
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://github.com/SolomonAIEngineering/solomon-ai-platform"
-              >
-                Open startup
               </Link>
             </Row>
           </Section>
@@ -204,7 +191,7 @@ export function Footer({ baseUrl, unsubscribeLink }: Props) {
           <Img
             src={`${baseUrl}/logo-footer.png`}
             width="100"
-            alt="Midday"
+            alt="Solomon AI"
             className="block"
           />
         </Link>

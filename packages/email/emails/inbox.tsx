@@ -27,11 +27,11 @@ const baseUrl =
     : "http://localhost:3000/email";
 
 export const InboxEmail = ({
-  fullName = "Viktor Hofte",
+  fullName = "Solomon AI Team",
   unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
-  const text = `Hi ${firstName}, With your own personalised email address together with Midday AI, you get automatic matching of incoming invoices or receipts to the correct transaction. When it comes time to export, all of your transactions and attachments are ready to go.`;
+  const text = `Hi ${firstName}, With your own personalized email address together with Solomon AI, you get automatic matching of incoming invoices or receipts to the correct transaction. When it comes time to export, all of your transactions and attachments are ready to go.`;
 
   return (
     <Html>
@@ -83,7 +83,7 @@ export const InboxEmail = ({
 
             <span className="font-medium">Hi {firstName},</span>
             <Text className="text-[#121212]">
-              With your own personalised email address together with Midday AI,
+              With your own personalized email address together with Solomon AI,
               you get automatic matching of incoming invoices or receipts to the
               correct transaction. When it comes time to export, all of your
               transactions and attachments are ready to go.
@@ -95,13 +95,13 @@ export const InboxEmail = ({
             <Section>
               <Column
                 title="Use your personilized email"
-                description="Copy your personilized Midday email and add it as a receipient to any purchase or subscription."
+                description="Copy your personilized Solomon AI email and add it as a recipient to any purchase or subscription."
                 imgSrc={`${baseUrl}/inbox-email.png`}
               />
 
               <Column
                 title="Automatic mapping to an existing transaction"
-                description="When the receipt or invoice is received, Midday automatically scans the invoice and finds the transaction. Voila, your transaction now has a the right attachment. "
+                description="When the receipt or invoice is received, Solomon AI automatically scans the invoice and finds the transaction. Voila, your transaction now has a the right attachment. "
                 imgSrc={`${baseUrl}/inbox-mapping.png`}
               />
 

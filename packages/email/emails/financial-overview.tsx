@@ -27,7 +27,7 @@ const baseUrl =
     : "http://localhost:3000/email";
 
 export const FinancialOverviewEmail = ({
-  fullName = "Pontus Abrahamsson",
+  fullName = "Solomon AI Team",
   unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
@@ -115,7 +115,7 @@ export const FinancialOverviewEmail = ({
                 Ask Solomon AI to find transactions without receipts or see
                 revenue patterns."
                 footer="Powered by OpenAI"
-                imgSrc={`${baseUrl}/midday-ai.png`}
+                imgSrc={`${baseUrl}/logo.png`}
               />
             </Section>
 

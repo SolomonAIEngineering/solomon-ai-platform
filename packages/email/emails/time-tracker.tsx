@@ -28,7 +28,7 @@ const baseUrl =
     : "http://localhost:3000/email";
 
 export const TimeTrackerEmail = ({
-  fullName = "Viktor Hofte",
+  fullName = "Solomon AI Team",
   unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
