@@ -64,3 +64,4 @@ tailwind.css
 *.log
 
 /dist
+*/.wrangler/*
