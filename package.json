@@ -7,7 +7,9 @@
     "packages/email/*",
     "packages/solomon/*",
     "apps/solomon/*",
-    "packages/solomon/config/*"
+    "packages/solomon/config/*",
+    "packages/apps/solomon/chrome-extension/apps/*",
+    "packages/apps/solomon/chrome-extension/packages/*"
   ],
   "scripts": {
     "build": "turbo build",
