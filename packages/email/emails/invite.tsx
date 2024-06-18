@@ -30,12 +30,12 @@ interface InviteEmailProps {
 
 const baseUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://midday.ai/email"
+    ? "https://solomon-ai.app/email"
     : "http://localhost:3000/email";
 
 const baseAppUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://app.midday.ai"
+    ? "https://app.solomon-ai.app"
     : "http://localhost:3001";
 
 export const InviteEmail = ({
