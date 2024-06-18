@@ -63,3 +63,4 @@ storybook-static
 *.log
 
 /dist
+*/.wrangler/*
