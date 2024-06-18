@@ -46,7 +46,7 @@ function CustomLink(props) {
 }
 
 function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return <Image alt={props.alt} {...props} />;
 }
 
 function Code({ children, ...props }) {
