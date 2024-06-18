@@ -1,4 +1,4 @@
-name: Build and Deploy Changes
+name: Solomon | Build and Deploy Changes
 
 on:
   push:

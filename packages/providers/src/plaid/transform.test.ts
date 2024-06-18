@@ -4,6 +4,7 @@ import {
   transformAccountBalance,
   transformTransaction,
 } from "./transform";
+import { TransactionPaymentChannelEnum, TransactionTransactionTypeEnum } from "plaid";
 
 test("Transform pending transaction", () => {
   expect(
@@ -47,7 +48,7 @@ test("Transform pending transaction", () => {
         merchant_entity_id: "eyg8o776k0QmNgVpAmaQj4WgzW9Qzo6O51gdd",
         merchant_name: "Uber",
         name: "Uber 063015 SF**POOL**",
-        payment_channel: "online",
+        payment_channel: TransactionPaymentChannelEnum.Online,
         payment_meta: {
           by_order_of: null,
           payee: null,
@@ -69,7 +70,7 @@ test("Transform pending transaction", () => {
           "https://plaid-category-icons.plaid.com/PFC_TRANSPORTATION.png",
         transaction_code: null,
         transaction_id: "NxkDjlyk45cQoDm5PEqJuKJaw6qrj9cy89zBA",
-        transaction_type: "special",
+        transaction_type: TransactionTransactionTypeEnum.Special,
         unofficial_currency_code: null,
         website: "uber.com",
       },
