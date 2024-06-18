@@ -20,7 +20,7 @@ export async function generateUnsubscribeLink({
     .setExpirationTime("1 week")
     .sign(secretKey);
 
-  const url = new URL(`/unsubscribe/${token}`, "https://app.midday.ai");
+  const url = new URL(`/unsubscribe/${token}`, "https://app.solomon-ai.app");
 
   url.searchParams.append("type", type);
 

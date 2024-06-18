@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 import type { ReactElement } from "react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://app.midday.ai"),
+  metadataBase: new URL("https://app.solomon-ai.app"),
   title: "Midday | Run your business smarter",
   description:
     "Automate financial tasks, stay organized, and make informed decisions effortlessly.",
