@@ -55,3 +55,11 @@ storybook-static
 # Supabase
 .branches
 .temp
+
+.DS_Store
+/node_modules
+*-lock.*
+*.lock
+*.log
+
+/dist
