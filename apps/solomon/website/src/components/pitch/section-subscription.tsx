@@ -88,7 +88,7 @@ export function SectionSubscription() {
 
           <div className="px-4 md:px-0">
             <a
-              href="https://midday.ai/engine"
+              href="https://solomon-ai.app/engine"
               target="_blank"
               rel="noreferrer"
               className="block"

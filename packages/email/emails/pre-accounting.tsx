@@ -24,12 +24,12 @@ interface OverviewProps {
 
 const baseUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://midday.ai/email"
+    ? "https://solomon-ai.app/email"
     : "http://localhost:3000/email";
 
 export const PreAccountingEmail = ({
   fullName = "Viktor Hofte",
-  unsubscribeLink = "https://midday.ai",
+  unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
   const text = `Hi ${firstName}, Always have to dig up old receipts and invoices when your accountant asks for it? No more, with Midday everything is gathered, neatly structured and connected to transactions.`;

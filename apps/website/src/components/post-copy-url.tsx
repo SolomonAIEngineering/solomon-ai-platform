@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export function PostCopyURL({ slug }) {
   const [isCopied, setCopied] = useState(false);
-  const url = `https://midday.ai${slug}`;
+  const url = `https://solomon-ai.app${slug}`;
 
   const handleClipboard = async () => {
     try {
@@ -17,7 +17,7 @@ export function PostCopyURL({ slug }) {
       setTimeout(() => {
         setCopied(false);
       }, 2000);
-    } catch {}
+    } catch { }
   };
 
   return (

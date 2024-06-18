@@ -23,12 +23,12 @@ interface OverviewProps {
 
 const baseUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://midday.ai/email"
+    ? "https://solomon-ai.app/email"
     : "http://localhost:3000/email";
 
 export const FinancialOverviewEmail = ({
   fullName = "Pontus Abrahamsson",
-  unsubscribeLink = "https://midday.ai",
+  unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
   const text = `Hi ${firstName}, We connect to the majority of banks worldwide, making it easier for you to keep track of all your expenses and income in one place. Filter and compare different time periods to better track your business.`;

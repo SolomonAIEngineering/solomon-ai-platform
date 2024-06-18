@@ -19,7 +19,7 @@ export default async function Unsubscribe({
     <div>
       <header className="w-full absolute left-0 right-0">
         <div className="ml-5 mt-4 md:ml-10 md:mt-10">
-          <Link href="https://midday.ai">
+          <Link href="https://solomon-ai.app">
             <Icons.Logo />
           </Link>
         </div>

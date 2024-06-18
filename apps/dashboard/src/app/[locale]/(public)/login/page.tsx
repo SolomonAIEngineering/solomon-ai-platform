@@ -132,7 +132,7 @@ export default async function Page(params) {
     <div>
       <header className="w-full fixed left-0 right-0">
         <div className="ml-5 mt-4 md:ml-10 md:mt-10">
-          <Link href="https://midday.ai">
+          <Link href="https://solomon-ai.app">
             <Icons.Logo />
           </Link>
         </div>
@@ -142,14 +142,11 @@ export default async function Page(params) {
         <div className="relative z-20 m-auto flex w-full max-w-[380px] flex-col py-8">
           <div className="flex w-full flex-col relative">
             <div className="pb-4 bg-gradient-to-r from-primary dark:via-primary dark:to-[#848484] to-[#000] inline-block text-transparent bg-clip-text">
-              <h1 className="font-medium pb-1 text-3xl">Login to midday.</h1>
+              <h1 className="font-medium pb-1 text-3xl">Login to Solomon AI.</h1>
             </div>
 
             <p className="font-medium pb-1 text-2xl text-[#878787]">
-              Automate financial tasks, <br /> stay organized, and make
-              <br />
-              informed decisions
-              <br /> effortlessly.
+              Proactive stress testing, <br /> for your practice.
             </p>
 
             <div className="pointer-events-auto mt-6 flex flex-col mb-6">
@@ -175,12 +172,12 @@ export default async function Page(params) {
 
             <p className="text-xs text-[#878787]">
               By clicking continue, you acknowledge that you have read and agree
-              to Midday's{" "}
-              <a href="https://midday.ai/terms" className="underline">
+              to Solomon AI's{" "}
+              <a href="https://solomon-ai.app/terms" className="underline">
                 Terms of Service
               </a>{" "}
               and{" "}
-              <a href="https://midday.ai/policy" className="underline">
+              <a href="https://solomon-ai.app/policy" className="underline">
                 Privacy Policy
               </a>
               .

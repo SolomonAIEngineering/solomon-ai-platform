@@ -8,7 +8,7 @@
     <br />
     <a href="https://go.midday.ai/anPiuRx">Discord</a>
     ·
-    <a href="https://midday.ai">Website</a>
+    <a href="https://solomon-ai.app">Website</a>
     ·
     <a href="https://github.com/midday-ai/midday/issues">Issues</a>
   </p>

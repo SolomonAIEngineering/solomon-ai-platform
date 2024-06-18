@@ -23,12 +23,12 @@ interface OverviewProps {
 
 const baseUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://midday.ai/email"
+    ? "https://solomon-ai.app/email"
     : "http://localhost:3000/email";
 
 export const InboxEmail = ({
   fullName = "Viktor Hofte",
-  unsubscribeLink = "https://midday.ai",
+  unsubscribeLink = "https://solomon-ai.app",
 }: OverviewProps) => {
   const firstName = fullName.split(" ").at(0);
   const text = `Hi ${firstName}, With your own personalised email address together with Midday AI, you get automatic matching of incoming invoices or receipts to the correct transaction. When it comes time to export, all of your transactions and attachments are ready to go.`;
