@@ -171,3 +171,7 @@ dist
 .dev.vars
 
 .wrangler
+<<<<<<< HEAD
+=======
+.wrangler/*
+>>>>>>> 733e8719 (chore: sync from upstream)
