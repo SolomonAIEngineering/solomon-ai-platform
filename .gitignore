@@ -56,3 +56,11 @@ tailwind.css
 # Supabase
 .branches
 .temp
+
+.DS_Store
+/node_modules
+*-lock.*
+*.lock
+*.log
+
+/dist
