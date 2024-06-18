@@ -110,9 +110,9 @@ export const FinancialOverviewEmail = ({
               />
 
               <Column
-                title="Ask Midday anything"
+                title="Ask Solomon AI anything"
                 description="Understand your biggest spendings and your biggest incomes.
-                Ask Midday to find transactions without receipts or see
+                Ask Solomon AI to find transactions without receipts or see
                 revenue patterns."
                 footer="Powered by OpenAI"
                 imgSrc={`${baseUrl}/midday-ai.png`}
