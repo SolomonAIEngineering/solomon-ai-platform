@@ -1,6 +1,6 @@
 # Chat History API
 
-This is a Cloudflare Worker with OpenAPI 3.1 using [itty-router-openapi](https://github.com/cloudflare/itty-router-openapi).
+Welcome to the Chat History API, a robust solution designed using Cloudflare Workers and OpenAPI 3.1 standards. This project utilizes the itty-router-openapi to create an API that automatically generates openapi.json schemas from the codebase and enforces validation for incoming requests based on defined parameters or request bodies.
 
 This is an example project made to be used as a quick start into building OpenAPI compliant Workers that generates the
 `openapi.json` schema automatically from code and validates the incoming request to the defined parameters or request body.

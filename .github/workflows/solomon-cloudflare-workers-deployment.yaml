@@ -2,8 +2,6 @@ name: Deploy Solomon AI Cloudflare Workers
 
 on:
   push:
-    branches:
-      - main
     paths:
       - apps/solomon/backend/cloudflare/**
 
