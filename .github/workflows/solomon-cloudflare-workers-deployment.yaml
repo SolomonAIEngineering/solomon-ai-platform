@@ -1,0 +1,35 @@
+name: Deploy Solomon AI Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/solomon/backend/cloudflare/**
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        api:
+          - apps/solomon/backend/cloudflare/chat-history-api
+          - apps/solomon/backend/cloudflare/conversational-agent-api
+          - apps/solomon/backend/cloudflare/notification-api
+          - apps/solomon/backend/cloudflare/vector-embedding-api
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+        working-directory: ${{ matrix.api }}
+      - name: Publish Workers
+        run: bun run deploy
+        working-directory: ${{ matrix.api }}
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
