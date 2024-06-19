@@ -26,6 +26,12 @@ import { useLongPress } from "use-long-press";
 
 const icons = {
   "/": () => <Icons.Overview size={22} />,
+  "/analytics/category": () => <Icons.Category size={22} />,
+  "/analytics/expense": () => <Icons.DashboardCustomize size={22} />,
+  "/analytics/income": () => <Icons.BrokenImage size={22} />,
+  "/analytics/location": () => <Icons.TrendingUp size={22} />,
+  "/analytics/merchant": () => <Icons.BaseAnalytics size={22} />,
+  "/insights": () => <Icons.Analytics size={22} />,
   "/transactions": () => <Icons.Transactions size={22} />,
   "/invoices": () => <Icons.Invoice size={22} />,
   "/tracker": () => <Icons.Tracker size={22} />,
@@ -34,34 +40,81 @@ const icons = {
   "/inbox": () => <Icons.Inbox2 size={22} />,
 };
 
-const defaultItems = [
+type MenuItem = {
+  path: string;
+  name: string;
+  beta: boolean;
+};
+
+const defaultItems: MenuItem[] = [
   {
     path: "/",
     name: "Overview",
+    beta: false,
   },
   {
     path: "/inbox",
     name: "Inbox",
+    beta: false,
   },
   {
     path: "/transactions",
     name: "Transactions",
+    beta: false,
   },
   {
     path: "/invoices",
     name: "Invoices",
+    beta: true,
   },
   {
     path: "/tracker",
     name: "Tracker",
+    beta: false,
   },
   {
     path: "/vault",
     name: "Vault",
+    beta: false,
   },
+  // Analytics (Sub Navigation)
+  {
+    path: "/analytics/category",
+    name: "Category Analytics",
+    beta: true,
+  },
+  {
+    path: "/analytics/expense",
+    name: "Expense Analytics",
+    beta: true,
+  },
+  {
+    path: "/analytics/income",
+    name: "Income Analytics",
+    beta: true,
+  },
+  {
+    path: "/analytics/location",
+    name: "Location Analytics",
+    beta: true,
+  },
+  {
+    path: "/analytics/merchant",
+    name: "Merchant Analytics",
+    beta: true,
+  },
+  // Insights (Sub Navigation)
+  {
+    path: "/insights",
+    name: "Financial Insights",
+    beta: true,
+  },
+  // Solomon (Sub Navigation)
+  // Stress Testing (Sub Navigation)
   {
     path: "/settings",
     name: "Settings",
+    beta: false,
   },
 ];
 
@@ -108,9 +161,9 @@ const Item = ({
                 "relative rounded-lg border border-transparent md:w-[45px] h-[45px] flex items-center md:justify-center",
                 "hover:bg-accent hover:border-[#DCDAD2] hover:dark:border-[#2C2C2C]",
                 isActive &&
-                  "bg-[#F2F1EF] dark:bg-secondary border-[#DCDAD2] dark:border-[#2C2C2C]",
+                "bg-[#F2F1EF] dark:bg-secondary border-[#DCDAD2] dark:border-[#2C2C2C]",
                 isCustomizing &&
-                  "bg-background border-[#DCDAD2] dark:border-[#2C2C2C]"
+                "bg-background border-[#DCDAD2] dark:border-[#2C2C2C]"
               )}
             >
               <motion.div
@@ -134,7 +187,7 @@ const Item = ({
                   className={cn(
                     "flex space-x-3 p-0 items-center pl-2 md:pl-0",
                     isCustomizing &&
-                      "animate-[jiggle_0.3s_ease-in-out_infinite] transform-gpu pointer-events-none"
+                    "animate-[jiggle_0.3s_ease-in-out_infinite] transform-gpu pointer-events-none"
                   )}
                 >
                   <Icon />
@@ -145,10 +198,20 @@ const Item = ({
           </TooltipTrigger>
           <TooltipContent
             side="left"
-            className="px-3 py-1.5 text-xs hidden md:flex"
+            className="px-3 py-1.5 text-xs hidden md:flex  rounded-2xl"
             sideOffset={10}
           >
-            {item.name}
+            <div className="flex flex-1 gap-2">
+              <span className="text-sm">
+                {item.name}
+              </span>
+              {item.beta && (
+                <span className="text-xs rounded-2xl bg-foreground text-background font-bold px-2 py-1">
+                  Beta
+                </span>
+              )}
+            </div>
+
           </TooltipContent>
         </Tooltip>
       </Link>
@@ -171,16 +234,39 @@ const itemVariant = {
   show: { opacity: 1 },
 };
 
+const CollapsibleSubMenu = ({ isOpen, toggle, children }) => (
+  <div>
+    <Button onClick={toggle} className="px-4 py-2 w-fit text-left font-bold rounded-sm bg-background text-foreground" variant={"outline"}>
+      <span>{isOpen ? '▲' : '▼'}</span>
+    </Button>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="mt-2 flex flex-col gap-1"
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+);
+
+
 export function MainMenu({ initialItems, onSelect }) {
-  const [items, setItems] = useState(initialItems ?? defaultItems);
+  const [items, setItems] = useState<Array<MenuItem>>(initialItems ?? defaultItems);
   const { isCustomizing, setCustomizing } = useMenuStore();
   const pathname = usePathname();
   const part = pathname?.split("/")[1];
   const updateMenu = useAction(updateMenuAction);
+  const [isAnalyticsOpen, setAnalyticsOpen] = useState(false);
 
   const hiddenItems = defaultItems.filter(
     (item) => !items.some((i) => i.path === item.path)
   );
+
 
   const onReorder = (items) => {
     setItems(items);
@@ -210,9 +296,22 @@ export function MainMenu({ initialItems, onSelect }) {
     }
   );
 
-  const ref = useClickAway(() => {
+  const ref = useClickAway<HTMLDivElement>(() => {
     setCustomizing(false);
   });
+
+  const toggleAnalytics = () => setAnalyticsOpen(prev => !prev);
+
+  // Separate analytics items from other items
+  const analyticsKeywords = ["income", "expense", "category", "location", "merchant"];
+  const analyticsItems = items.filter(item =>
+    analyticsKeywords.some(keyword => item.path.includes(keyword))
+  );
+
+  const otherItems = items.filter(item =>
+    !analyticsKeywords.some(keyword => item.path.includes(keyword))
+  );
+
 
   return (
     <div className="mt-6" {...bind()} ref={ref}>
@@ -224,10 +323,12 @@ export function MainMenu({ initialItems, onSelect }) {
             values={items}
             className="flex flex-col gap-1.5"
           >
-            {items.map((item) => {
+            {otherItems.map((item) => {
               const isActive =
                 (pathname === "/" && item.path === "/") ||
                 (pathname !== "/" && item.path.startsWith(`/${part}`));
+
+
 
               return (
                 <Item
@@ -242,6 +343,25 @@ export function MainMenu({ initialItems, onSelect }) {
                 />
               );
             })}
+            {analyticsItems.length > 0 && (
+              <CollapsibleSubMenu isOpen={isAnalyticsOpen} toggle={toggleAnalytics}>
+                {analyticsItems.map((item) => {
+                  return (
+                    <Item
+                      key={item.path}
+                      item={item}
+                      isActive={false}
+                      isCustomizing={isCustomizing}
+                      onRemove={onRemove}
+                      disableRemove={analyticsItems.length === 1}
+                      onDragEnd={onDragEnd}
+                      onSelect={onSelect}
+                    />
+                  )
+                }
+                )}
+              </CollapsibleSubMenu>
+            )}
           </Reorder.Group>
         </nav>
       </AnimatePresence>
