@@ -1,11 +1,11 @@
-name: Deploy Solomon AI Cloudflare Workers
+name: Deploy cloudflare Workers
 
 on:
   push:
     branches-ignore:
       - main
     paths:
-      - apps/solomon/backend/cloudflare/**
+      - apps/solomon/backend/**
 
 jobs:
   deploy:
