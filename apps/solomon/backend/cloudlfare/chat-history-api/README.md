@@ -1,4 +1,4 @@
-# Chat History API
+# Cloudflare Chat History API
 
 This is a Cloudflare Worker with OpenAPI 3.1 using [itty-router-openapi](https://github.com/cloudflare/itty-router-openapi).
 
