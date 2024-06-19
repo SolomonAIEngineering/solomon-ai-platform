@@ -303,7 +303,7 @@ export function MainMenu({ initialItems, onSelect }) {
   const toggleAnalytics = () => setAnalyticsOpen(prev => !prev);
 
   // Separate analytics items from other items
-  const analyticsKeywords = ["income", "expense", "category", "location", "merchant"];
+  const analyticsKeywords = ["/analytics"];
   const analyticsItems = items.filter(item =>
     analyticsKeywords.some(keyword => item.path.includes(keyword))
   );
