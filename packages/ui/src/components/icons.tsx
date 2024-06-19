@@ -4,6 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FiGithub } from "react-icons/fi";
 import {
   MdAdd,
+  MdAnalytics,
   MdArrowBack,
   MdArrowLeft,
   MdArrowRight,
@@ -34,6 +35,8 @@ import {
   MdKeyboardArrowUp,
   MdMenu,
   MdMoreHoriz,
+  MdOutlineAccountBalanceWallet,
+  MdOutlineAnalytics,
   MdOutlineArrowDownward,
   MdOutlineArrowForward,
   MdOutlineAutoAwesome,
@@ -186,8 +189,8 @@ c-35 156 -46 212 -42 217 4 4 43 -79 90 -194 40 -95 63 -133 86 -140 33 -11
   ),
   Logo: (props: any) => (
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-      width={50}
-      height={35}
+      width={props.width ? props.width : 50}
+      height={props.height ? props.height : 35}
       {...props}
       viewBox="0 0 192.000000 192.000000">
       <g transform="translate(0.000000,192.000000) scale(0.100000,-0.100000)"
@@ -551,7 +554,8 @@ c-35 156 -46 212 -42 217 4 4 43 -79 90 -194 40 -95 63 -133 86 -140 33 -11
   Category: MdOutlineCategory,
   Visibility: MdOutlineVisibility,
   Face: MdOutlineFace,
-  MoreHoriz: MdMoreHoriz,
+  BaseAnalytics: MdAnalytics,
+  Analytics: MdOutlineAnalytics,
   Pdf: MdPictureAsPdf,
   DriveFileMove: MdDriveFileMove,
   Enter: MdSubdirectoryArrowLeft,

@@ -20,7 +20,7 @@ import Link from "next/link";
 import { userAgent } from "next/server";
 
 export const metadata: Metadata = {
-  title: "Login | Midday",
+  title: "Login | Solomon AI",
 };
 
 export default async function Page(params) {
