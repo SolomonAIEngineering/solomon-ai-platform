@@ -1,0 +1,6 @@
+{
+  "id": "240618rr4ltz8lj",
+  "icon": "./public/appicon.png",
+  "schemaVersion": 1,
+  "appfiles": ["src/*.ts", "src/*.tsx"]
+}
