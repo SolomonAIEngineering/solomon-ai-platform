@@ -65,3 +65,4 @@ tailwind.css
 
 /dist
 */.wrangler/*
+*/config.toml/*
