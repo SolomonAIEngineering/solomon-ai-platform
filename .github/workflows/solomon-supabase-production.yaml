@@ -1,0 +1,40 @@
+name: Deploy Migrations to Production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/solomon/supabase/**
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        directory:
+          - packages/solomon/supabase
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PRODUCTION_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ secrets.PRODUCTION_PROJECT_ID }}
+      SUPABASE_AUTH_GITHUB_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_GITHUB_CLIENT_ID }}
+      SUPABASE_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.SUPABASE_AUTH_GITHUB_CLIENT_SECRET }}
+      SUPABASE_AUTH_GOOGLE_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_GOOGLE_CLIENT_ID }}
+      SUPABASE_AUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.SUPABASE_AUTH_GOOGLE_CLIENT_SECRET }}
+      SUPABASE_AUTH_APPLE_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_APPLE_CLIENT_ID }}
+      SUPABASE_AUTH_APPLE_SECRET: ${{ secrets.SUPABASE_AUTH_APPLE_SECRET }}
+      SUPABASE_AUTH_SLACK_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_SLACK_CLIENT_ID }}
+      SUPABASE_AUTH_SLACK_SECRET: ${{ secrets.SUPABASE_AUTH_SLACK_SECRET }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - run: supabase link --project-ref $SUPABASE_PROJECT_ID
+        working-directory: ${{ matrix.directory }}
+      - run: supabase db push
+        working-directory: ${{ matrix.directory }}
