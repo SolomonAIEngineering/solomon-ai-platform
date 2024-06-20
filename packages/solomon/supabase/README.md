@@ -1,4 +1,4 @@
-# Supabase DB Local Development Guide
+# Supabase Local Development Guide
 
 ## Overview
 
