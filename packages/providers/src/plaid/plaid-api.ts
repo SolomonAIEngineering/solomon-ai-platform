@@ -116,7 +116,7 @@ export class PlaidApi {
       client_id: process.env.PLAID_CLIENT_ID,
       secret: process.env.PLAID_SECRET,
       client_name: "simfiny",
-      products: [Products.Transactions, Products.Investments, Products.Liabilities],
+      products: [Products.Transactions],
       // TODO: Update language based on user preference
       language: "en",
       country_codes: [
