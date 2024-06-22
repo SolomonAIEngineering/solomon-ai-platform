@@ -35,36 +35,40 @@ export default async function Page(params) {
   const showTrackingConsent = isEU && !cookieStore.has(Cookies.TrackingConsent);
   const { device } = userAgent({ headers: headers() });
 
-  let moreSignInOptions = null;
+  let moreSignInOptions: React.ReactNode | null = null;
+
   let preferredSignInOption =
     device?.vendor === "Apple" ? (
       <div className="flex flex-col space-y-2">
         <GoogleSignIn />
-        <AppleSignIn />
+        {/* <AppleSignIn /> */}
       </div>
     ) : (
       <GoogleSignIn />
     );
 
   switch (preferred?.value) {
-    case "apple":
-      preferredSignInOption = <AppleSignIn />;
-      moreSignInOptions = (
-        <>
-          <GoogleSignIn />
-          <SlackSignIn />
-          <GithubSignIn />
-          <OTPSignIn className="border-t-[1px] border-border pt-8" />
-        </>
-      );
-      break;
+    // case "apple":
+    //   preferredSignInOption = <AppleSignIn />;
+    //   moreSignInOptions = (
+    //     <>
+    //       <GoogleSignIn />
+    //       <SlackSignIn />
+    //       <GithubSignIn />
+    //       <OTPSignIn className="border-t-[1px] border-border pt-8" />
+    //     </>
+    //   );
+    //   break;
 
     case "slack":
       preferredSignInOption = <SlackSignIn />;
       moreSignInOptions = (
         <>
           <GoogleSignIn />
-          <AppleSignIn />
+          /* `<AppleSignIn />` is a component that likely provides a button or interface for users to
+          sign in using their Apple ID. It is part of the login options available on the page for
+          users to choose from when logging in to the Solomon AI platform. */
+          {/* <AppleSignIn /> */}
           <GithubSignIn />
           <OTPSignIn className="border-t-[1px] border-border pt-8" />
         </>
@@ -76,7 +80,7 @@ export default async function Page(params) {
       moreSignInOptions = (
         <>
           <GoogleSignIn />
-          <AppleSignIn />
+          {/* <AppleSignIn /> */}
           <SlackSignIn />
           <OTPSignIn className="border-t-[1px] border-border pt-8" />
         </>
@@ -87,7 +91,7 @@ export default async function Page(params) {
       preferredSignInOption = <GoogleSignIn />;
       moreSignInOptions = (
         <>
-          <AppleSignIn />
+          {/* <AppleSignIn /> */}
           <GithubSignIn />
           <SlackSignIn />
           <OTPSignIn className="border-t-[1px] border-border pt-8" />
@@ -100,7 +104,7 @@ export default async function Page(params) {
       moreSignInOptions = (
         <>
           <GoogleSignIn />
-          <AppleSignIn />
+          {/* <AppleSignIn /> */}
           <GithubSignIn />
           <SlackSignIn />
         </>
@@ -119,7 +123,7 @@ export default async function Page(params) {
       } else {
         moreSignInOptions = (
           <>
-            <AppleSignIn />
+            {/* <AppleSignIn /> */}
             <SlackSignIn />
             <GithubSignIn />
             <OTPSignIn className="border-t-[1px] border-border pt-8" />
@@ -142,13 +146,14 @@ export default async function Page(params) {
         <div className="relative z-20 m-auto flex w-full max-w-[380px] flex-col py-8">
           <div className="flex w-full flex-col relative">
             <div className="pb-4 bg-gradient-to-r from-primary dark:via-primary dark:to-[#848484] to-[#000] inline-block text-transparent bg-clip-text">
-              <h1 className="font-medium pb-1 text-3xl">Login to Solomon AI.</h1>
+              <h1 className="font-medium pb-1 text-3xl">.</h1>
             </div>
 
             <p className="font-medium pb-1 text-2xl text-[#878787]">
               Proactive stress testing, <br /> for your practice.
             </p>
 
+            {/** this is the form to migrate */}
             <div className="pointer-events-auto mt-6 flex flex-col mb-6">
               {preferredSignInOption}
 
@@ -188,5 +193,120 @@ export default async function Page(params) {
 
       {showTrackingConsent && <ConsentBanner />}
     </div>
+  );
+}
+interface AuthenticationFormProps {
+  preferredAuthenticationMethod: "google" | "github" | "otp" | "slack";
+  deviceVendor: "Apple" | "Google" | "Microsoft" | "Samsung" | "Xiaomi";
+}
+
+const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
+  preferredAuthenticationMethod,
+  deviceVendor
+}) => {
+
+  const renderPreferredSignInOption = () => {
+    switch (preferredAuthenticationMethod) {
+      case "slack":
+        return <SlackSignIn />;
+      case "github":
+        return <GithubSignIn />;
+      case "otp":
+        return <OTPSignIn />;
+      case "google":
+      default:
+        return deviceVendor === "Apple" ? (
+          <div className="flex flex-col space-y-2">
+            <GoogleSignIn />
+          </div>
+        ) : (
+          <GoogleSignIn />
+        );
+    }
+  };
+
+  const renderMoreSignInOptions = () => {
+    switch (preferredAuthenticationMethod) {
+      case "slack":
+        return (
+          <>
+            <GoogleSignIn />
+            <AppleSignIn />
+            <GithubSignIn />
+            <OTPSignIn className="border-t-[1px] border-border pt-8" />
+          </>
+        );
+      case "github":
+        return (
+          <>
+            <GoogleSignIn />
+            <SlackSignIn />
+            <OTPSignIn className="border-t-[1px] border-border pt-8" />
+          </>
+        );
+      case "google":
+        return (
+          <>
+            <GithubSignIn />
+            <SlackSignIn />
+            <OTPSignIn className="border-t-[1px] border-border pt-8" />
+          </>
+        );
+      case "otp":
+        return (
+          <>
+            <GoogleSignIn />
+            <GithubSignIn />
+            <SlackSignIn />
+          </>
+        );
+      default:
+        return (
+          <>
+            <SlackSignIn />
+            <GithubSignIn />
+            <OTPSignIn className="border-t-[1px] border-border pt-8" />
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="pointer-events-auto mt-6 flex flex-col mb-6">
+      {renderPreferredSignInOption()}
+      <Accordion
+        type="single"
+        collapsible
+        className="border-t-[1px] pt-2 mt-6"
+      >
+        <AccordionItem value="item-1" className="border-0">
+          <AccordionTrigger className="justify-center space-x-2 flex text-sm">
+            <span>More options</span>
+          </AccordionTrigger>
+          <AccordionContent className="mt-4">
+            <div className="flex flex-col space-y-4">
+              {renderMoreSignInOptions()}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  );
+};
+
+const TermsAndPrivacyPolicy = () => {
+  return (
+    <p className="text-xs text-[#878787]">
+      By clicking continue, you acknowledge that you have read and agree
+      to Solomon AI's{" "}
+      <a href="https://solomon-ai.app/terms" className="underline">
+        Terms of Service
+      </a>{" "}
+      and{" "}
+      <a href="https://solomon-ai.app/policy" className="underline">
+        Privacy Policy
+      </a>
+      .
+    </p>
   );
 }
