@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide provides instructions to set up a local Supabase instance with essential features and third-party authentication. Follow the steps below to ensure your Supabase instance starts correctly and all required features are enabled.
+This guide provides instructions to set up a local Supabase instance with essential features and third-party authentication. Follow the steps below to ensure your Supabase instance starts correctly and all required features are enabled. This is very critical to ensure the app works properly
 
 ## Prerequisites
 
