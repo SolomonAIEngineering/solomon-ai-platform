@@ -34,10 +34,20 @@ jobs:
         with:
           version: latest
 
+      - name: Debug working directory
+        run: |
+          echo "Current working directory: $(pwd)"
+          ls -la
+        working-directory: ${{ matrix.directory }}
+
       - name: Link Supabase project
-        run: supabase link --project-ref $SUPABASE_PROJECT_ID --debug
-        working-directory: ./packages/solomon
+        run: |
+          echo "Linking project with project-ref: $SUPABASE_PROJECT_ID"
+          supabase link --project-ref $SUPABASE_PROJECT_ID --debug
+        working-directory: ${{ matrix.directory }}
 
       - name: Deploy migrations
-        run: supabase db push --debug
-        working-directory: ./packages/solomon
+        run: |
+          echo "Deploying migrations from directory: ${{ matrix.directory }}"
+          supabase db push --debug
+        working-directory: ${{ matrix.directory }}
