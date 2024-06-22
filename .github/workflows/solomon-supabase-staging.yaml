@@ -42,16 +42,9 @@ jobs:
 
       - name: Link Supabase project
         run: |
-          echo "Current working directory: $(pwd)"
-          ls -la
           echo "Linking project with project-ref: $SUPABASE_PROJECT_ID"
           supabase link --project-ref $SUPABASE_PROJECT_ID --debug --workdir ${{ matrix.directory }}
-        # working-directory: ${{ matrix.directory }}
-
       - name: Deploy migrations
         run: |
-          echo "Current working directory: $(pwd)"
-          ls -la
           echo "Deploying migrations from directory: ${{ matrix.directory }}"
           supabase db push --debug --workdir ${{ matrix.directory }}
-        # working-directory: ${{ matrix.directory }}
