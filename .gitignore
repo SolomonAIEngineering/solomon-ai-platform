@@ -64,4 +64,3 @@ storybook-static
 
 /dist
 */.wrangler/*
-*/config.toml
