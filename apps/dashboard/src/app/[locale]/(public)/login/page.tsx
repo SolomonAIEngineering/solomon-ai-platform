@@ -146,7 +146,7 @@ export default async function Page(params) {
         <div className="relative z-20 m-auto flex w-full max-w-[380px] flex-col py-8">
           <div className="flex w-full flex-col relative">
             <div className="pb-4 bg-gradient-to-r from-primary dark:via-primary dark:to-[#848484] to-[#000] inline-block text-transparent bg-clip-text">
-              <h1 className="font-medium pb-1 text-3xl">.</h1>
+              <h1 className="font-medium pb-1 text-3xl">Solomon AI</h1>
             </div>
 
             <p className="font-medium pb-1 text-2xl text-[#878787]">
@@ -154,26 +154,10 @@ export default async function Page(params) {
             </p>
 
             {/** this is the form to migrate */}
-            <div className="pointer-events-auto mt-6 flex flex-col mb-6">
-              {preferredSignInOption}
-
-              <Accordion
-                type="single"
-                collapsible
-                className="border-t-[1px] pt-2 mt-6"
-              >
-                <AccordionItem value="item-1" className="border-0">
-                  <AccordionTrigger className="justify-center space-x-2 flex text-sm">
-                    <span>More options</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="mt-4">
-                    <div className="flex flex-col space-y-4">
-                      {moreSignInOptions}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
+            <AuthenticationForm
+              preferredAuthenticationMethod={preferred?.value as string}
+              deviceVendor={device?.vendor as string}
+            />
 
             <p className="text-xs text-[#878787]">
               By clicking continue, you acknowledge that you have read and agree
@@ -196,8 +180,8 @@ export default async function Page(params) {
   );
 }
 interface AuthenticationFormProps {
-  preferredAuthenticationMethod: "google" | "github" | "otp" | "slack";
-  deviceVendor: "Apple" | "Google" | "Microsoft" | "Samsung" | "Xiaomi";
+  preferredAuthenticationMethod: string;
+  deviceVendor: string;
 }
 
 const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
