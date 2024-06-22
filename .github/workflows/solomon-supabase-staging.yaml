@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - staging
+    paths:
+      - packages/solomon/supabase/**
   workflow_dispatch:
 
 jobs:
@@ -39,12 +41,11 @@ jobs:
           echo "Current working directory: $(pwd)"
           ls -la
         working-directory: ${{ matrix.directory }}
-
       - name: Link Supabase project
         run: |
           echo "Linking project with project-ref: $SUPABASE_PROJECT_ID"
-          supabase link --project-ref $SUPABASE_PROJECT_ID --debug --workdir ${{ matrix.directory }}
+          supabase link --project-ref $SUPABASE_PROJECT_ID --workdir ${{ matrix.directory }}
       - name: Deploy migrations
         run: |
           echo "Deploying migrations from directory: ${{ matrix.directory }}"
-          supabase db push --debug --workdir ${{ matrix.directory }}
+          supabase db push --workdir ${{ matrix.directory }}
