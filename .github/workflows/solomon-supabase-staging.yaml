@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         directory:
-          - packages/solomon/supabase
+          - packages/solomon
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_STAGING_ACCESS_TOKEN }}
       SUPABASE_DB_PASSWORD: ${{ secrets.STAGING_DB_PASSWORD }}
@@ -33,8 +33,6 @@ jobs:
         with:
           version: latest
       - run: supabase link --project-ref $SUPABASE_PROJECT_ID
-        working-directory: ${{ matrix.directory }}
-      - run: supabase db reset
         working-directory: ${{ matrix.directory }}
       - run: supabase db push
         working-directory: ${{ matrix.directory }}
