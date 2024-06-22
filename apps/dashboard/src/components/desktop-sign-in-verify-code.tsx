@@ -9,7 +9,7 @@ export function DesktopSignInVerifyCode({ code }) {
 
   useEffect(() => {
     if (code && !hasRunned.current) {
-      window.location.replace(`midday://api/auth/callback?code=${code}`);
+      window.location.replace(`solomonai://api/auth/callback?code=${code}`);
       hasRunned.current = true;
     }
   }, [code]);
@@ -30,7 +30,7 @@ export function DesktopSignInVerifyCode({ code }) {
           If Midday dosen't open in a few seconds,{" "}
           <a
             className="underline"
-            href={`midday://api/auth/callback?code=${code}`}
+            href={`solomonai://api/auth/callback?code=${code}`}
           >
             click here
           </a>

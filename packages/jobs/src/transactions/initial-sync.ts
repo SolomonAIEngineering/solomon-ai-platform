@@ -67,6 +67,14 @@ client.defineJob({
         bankAccountId: account.id,
       });
 
+      await io.logger.info("Transactions obtained from provider", {
+        provider: account.bank_connection.provider,
+        teamId: account.team_id,
+        accountId: account.account_id,
+        bankAccountId: account.id,
+        transactions,
+      });
+
       // NOTE: We will get all the transactions at once for each account so
       // we need to guard against massive payloads
       await processPromisesBatch(transactions, BATCH_LIMIT, async (batch) => {
@@ -74,6 +82,14 @@ client.defineJob({
           ...rest,
           category_slug: category,
         }));
+
+        await io.logger.debug("Transactions ready for upsert", {
+          teamId: account.team_id,
+          accountId: account.account_id,
+          bankAccountId: account.id,
+          transactions: formatted,
+          batchSize: formatted.length,
+        });
 
         await supabase.from("transactions").upsert(formatted, {
           onConflict: "internal_id",

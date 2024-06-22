@@ -13,6 +13,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "jobs": "bunx @trigger.dev/cli@latest dev -p 3000 --client-id=solomon-ai-OEsD",
     "dev": "bun run start-database && next dev -p 3000",
+    "local": "next dev -p 3000",
     "lint": "next lint",
     "format": "biome format --write .",
     "start": "next start",
