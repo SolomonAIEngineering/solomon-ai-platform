@@ -34,5 +34,7 @@ jobs:
           version: latest
       - run: supabase link --project-ref $SUPABASE_PROJECT_ID
         working-directory: ${{ matrix.directory }}
+      - run: supabase db reset
+        working-directory: ${{ matrix.directory }}
       - run: supabase db push
         working-directory: ${{ matrix.directory }}
