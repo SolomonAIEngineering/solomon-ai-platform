@@ -9,12 +9,14 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import type { ReactElement } from "react";
+import IntercomClientComponent from "@/components/intercom-client-component";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://app.solomon-ai.app"),
-  title: "Midday | Run your business smarter",
+  title: "Solomon AI | Stress Testing",
   description:
-    "Automate financial tasks, stay organized, and make informed decisions effortlessly.",
+    "Proactive stress testing for your medical practice.",
 };
 
 export const viewport = {
@@ -47,6 +49,19 @@ export default function Layout({
       >
         {/* <SystemBanner /> */}
         {children}
+        <Script
+          strategy="afterInteractive"
+          id="intercom-settings"
+          dangerouslySetInnerHTML={{
+            __html: `
+                        window.intercomSettings = {
+                            api_base: "https://api-iam.intercom.io",
+                            app_id: "pezs7zbq",
+                        };
+                    `
+          }}
+        />
+        <IntercomClientComponent />
         <SpeedInsights />
         <Toaster />
         <Analytics />
