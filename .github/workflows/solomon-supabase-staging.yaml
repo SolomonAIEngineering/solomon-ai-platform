@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - staging
-    paths:
-      - packages/solomon/supabase/**
+    # paths:
+    #   - packages/solomon/supabase/**
   workflow_dispatch:
 
 jobs:
