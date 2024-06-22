@@ -36,8 +36,8 @@ jobs:
 
       - name: Link Supabase project
         run: supabase link --project-ref $SUPABASE_PROJECT_ID --debug
-        working-directory: ${{ matrix.directory }}
+        working-directory: ./packages/solomon
 
       - name: Deploy migrations
         run: supabase db push --debug
-        working-directory: ${{ matrix.directory }}
+        working-directory: ./packages/solomon
