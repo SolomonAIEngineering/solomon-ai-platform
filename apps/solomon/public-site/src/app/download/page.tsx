@@ -1,9 +1,14 @@
 import { CopyInput } from "@/components/copy-input";
 import { Keyboard } from "@/components/keyboard";
 import { Button } from "@midday/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@midday/ui/card";
+import { Input } from "@midday/ui/input";
+import { Label } from "@midday/ui/label";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@midday/ui/tabs";
 import type { Metadata } from "next";
 import Image from "next/image";
 import appIcon from "public/app-icon.png";
+import App from '../../../../mobile/app/app';
 
 export const metadata: Metadata = {
   title: "Download",
@@ -26,13 +31,56 @@ export default function Page() {
         quality={100}
         className="w-[80px] h-[80px] mt-12 md:mt-0 md:h-auto md:w-auto"
       />
-      <p className="mb-4 text-2xl	font-medium mt-8">Solomon AI for Mac</p>
+      <AppDownloadSection />
+    </div>
+  );
+}
+
+export function AppDownloadSection() {
+  return (
+    <Tabs defaultValue="mac" className="w-fit">
+      <TabsList className="grid w-full grid-cols-3 rounded-2xl">
+        <TabsTrigger value="mac">Mac</TabsTrigger>
+        <TabsTrigger value="windows">Windows</TabsTrigger>
+        <TabsTrigger value="linux">Linux</TabsTrigger>
+      </TabsList>
+      <TabsContent value="mac">
+        <>
+          <AppDownload platform="Mac" link="https://dub.solomon-ai.app/l66aUzF" />
+        </>
+      </TabsContent>
+      <TabsContent value="windows">
+        <>
+          <AppDownload platform="Windows" link="https://dub.solomon-ai.app/CvbYQHY" />
+        </>
+      </TabsContent>
+      <TabsContent value="linux">
+        <>
+          <AppDownload platform="Linux" link="https://dub.solomon-ai.app/NNudKB8" />
+        </>
+      </TabsContent>
+    </Tabs>
+  )
+}
+
+interface AppDownloadProps {
+  platform: "Mac" | "Windows" | "Linux";
+  link: string;
+}
+
+const AppDownload: React.FC<AppDownloadProps> = ({
+  platform,
+  link
+}) => {
+  return (
+    <>
+      <p className="mb-4 text-2xl	font-medium mt-8">Solomon AI for {platform}</p>
       <p className="text-[#878787] font-sm max-w-[500px]">
-        With Solomon AI on Mac you have everything <br />
+        With Solomon AI on {platform} you have everything <br />
         accessible just one click away.
       </p>
 
-      <a href="https://go.solomon-ai.app/d" download>
+      <a href={link} download>
         <Button
           variant="outline"
           className="border border-primary h-12 px-6 mt-8"
@@ -46,9 +94,9 @@ export default function Page() {
       </p>
 
       <CopyInput
-        value="curl -sL https://go.solomon-ai.app/d | tar -xz"
-        className="max-w-[410px] mt-8 font-mono font-normal"
+        value={`curl -sL ${link} | tar -xz`}
+        className="max-w-[600px] mt-8 font-mono font-normal rounded-2xl"
       />
-    </div>
-  );
+    </>
+  )
 }
