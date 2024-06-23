@@ -36,7 +36,7 @@ export default async function CreateTeam() {
 
           <div className="mb-2">
             <p className="text-sm">
-              This will be the name of your Midday workspace — choose something
+              This will be the name of your Solomon AI workspace — choose something
               that your team will recognize.
             </p>
           </div>

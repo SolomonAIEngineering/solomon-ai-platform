@@ -21,13 +21,13 @@ export function DesktopSignInVerifyCode({ code }) {
           src={appIcon}
           width={80}
           height={80}
-          alt="Midday"
+          alt="Solomon AI"
           quality={100}
           className="mb-10"
         />
         <p>Signing in...</p>
         <p className="mb-4">
-          If Midday dosen't open in a few seconds,{" "}
+          If Solomon AI dosen't open in a few seconds,{" "}
           <a
             className="underline"
             href={`midday://api/auth/callback?code=${code}`}
