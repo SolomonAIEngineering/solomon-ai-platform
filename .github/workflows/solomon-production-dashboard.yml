@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - apps/solomon/dashboard/**
+      - apps/dashboard/**
       - packages/**
       - packages/solomon/**
 jobs:
