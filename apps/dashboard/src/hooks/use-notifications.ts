@@ -1,5 +1,5 @@
-import { createClient } from "@midday/supabase/client";
-import { getUserQuery } from "@midday/supabase/queries";
+import { createClient } from "@solomon/supabase/client";
+import { getUserQuery } from "@solomon/supabase/queries";
 import { HeadlessService } from "@novu/headless";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -24,8 +24,8 @@ export function useNotifications() {
       );
 
       headlessService.markAllMessagesAsRead({
-        listener: () => {},
-        onError: () => {},
+        listener: () => { },
+        onError: () => { },
       });
     }
   };
@@ -49,8 +49,8 @@ export function useNotifications() {
 
       headlessService.markNotificationsAsRead({
         messageId: [messageId],
-        listener: (result) => {},
-        onError: (error) => {},
+        listener: (result) => { },
+        onError: (error) => { },
       });
     }
   };
@@ -60,7 +60,7 @@ export function useNotifications() {
 
     if (headlessService) {
       headlessService.fetchNotifications({
-        listener: ({}) => {},
+        listener: ({ }) => { },
         onSuccess: (response) => {
           setLoading(false);
           setNotifications(response.data);
@@ -80,8 +80,8 @@ export function useNotifications() {
         }))
       );
       headlessService.markAllMessagesAsSeen({
-        listener: () => {},
-        onError: () => {},
+        listener: () => { },
+        onError: () => { },
       });
     }
   };
@@ -126,12 +126,12 @@ export function useNotifications() {
       });
 
       headlessService.initializeSession({
-        listener: () => {},
+        listener: () => { },
         onSuccess: () => {
           headlessServiceRef.current = headlessService;
           fetchNotifications();
         },
-        onError: () => {},
+        onError: () => { },
       });
     }
   }, [fetchNotifications, subscriberId]);

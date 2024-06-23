@@ -6,8 +6,8 @@ import {
   getBurnRateQuery,
   getMetricsQuery,
   getRunwayQuery,
-} from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+} from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { Button } from "@midday/ui/button";
 import { Icons } from "@midday/ui/icons";
 import {

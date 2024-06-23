@@ -79,7 +79,7 @@ function RowTitle({ isEditing, name: initialName, path, href }) {
   const [name, setName] = useState(initialName ?? "Untitled Folder");
 
   const createFolder = useAction(createFolderAction, {
-    onExecute: () => {},
+    onExecute: () => { },
     onError: () => {
       toast({
         duration: 3500,
@@ -182,7 +182,7 @@ export function DataTableRow({ data, teamId }) {
           title: `Copied URL for ${data.name} to clipboard.`,
           variant: "success",
         });
-      } catch {}
+      } catch { }
     },
   });
 

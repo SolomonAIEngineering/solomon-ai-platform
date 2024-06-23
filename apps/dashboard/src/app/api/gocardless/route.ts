@@ -1,5 +1,5 @@
-import { updateBankConnection } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { updateBankConnection } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";

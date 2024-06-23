@@ -1,5 +1,5 @@
 import { BankAccount } from "@/components/bank-account";
-import { getTeamBankAccounts } from "@midday/supabase/cached-queries";
+import { getTeamBankAccounts } from "@solomon/supabase/cached-queries";
 import { Skeleton } from "@midday/ui/skeleton";
 
 export function BankAccountListSkeleton() {

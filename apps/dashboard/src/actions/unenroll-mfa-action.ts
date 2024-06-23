@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@midday/supabase/server";
+import { createClient } from "@solomon/supabase/server";
 import { revalidatePath } from "next/cache";
 import { action } from "./safe-action";
 import { unenrollMfaSchema } from "./schema";

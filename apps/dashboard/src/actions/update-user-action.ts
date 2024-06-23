@@ -1,7 +1,7 @@
 "use server";
 
-import { updateUser } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { updateUser } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { revalidateTag } from "next/cache";
 import { action } from "./safe-action";
 import { updateUserSchema } from "./schema";

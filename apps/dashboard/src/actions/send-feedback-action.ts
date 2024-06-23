@@ -2,7 +2,7 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { getUser } from "@midday/supabase/cached-queries";
+import { getUser } from "@solomon/supabase/cached-queries";
 import { PlainClient } from "@team-plain/typescript-sdk";
 import { action } from "./safe-action";
 import { sendFeedbackSchema } from "./schema";

@@ -5,8 +5,8 @@ import {
   TriggerEvents,
   triggerBulk,
 } from "@midday/notification";
-import { updateInboxById } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { updateInboxById } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { subDays } from "date-fns";
 import { revalidateTag } from "next/cache";
 import { headers } from "next/headers";

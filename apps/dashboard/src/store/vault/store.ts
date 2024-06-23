@@ -6,6 +6,7 @@ type Item = {
   name: string;
   isFolder?: boolean;
   isEditing?: boolean;
+  path?: string;
 };
 
 export interface VaultProps {

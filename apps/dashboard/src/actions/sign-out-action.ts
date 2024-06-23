@@ -2,8 +2,8 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { getSession } from "@midday/supabase/cached-queries";
-import { createClient } from "@midday/supabase/server";
+import { getSession } from "@solomon/supabase/cached-queries";
+import { createClient } from "@solomon/supabase/server";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { mfaVerifyAction } from "@/actions/mfa-verify-action";
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import { Button } from "@midday/ui/button";
 import { Dialog, DialogContent } from "@midday/ui/dialog";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@midday/ui/input-otp";

@@ -3,8 +3,8 @@
 import { importTransactionsAction } from "@/actions/transactions/import-transactions";
 import { ImportTransactionsForm } from "@/components/forms/import-transactions-form";
 import { useUpload } from "@/hooks/use-upload";
-import { createClient } from "@midday/supabase/client";
-import { getCurrentUserTeamQuery } from "@midday/supabase/queries";
+import { createClient } from "@solomon/supabase/client";
+import { getCurrentUserTeamQuery } from "@solomon/supabase/queries";
 import { cn } from "@midday/ui/cn";
 import {
   Dialog,

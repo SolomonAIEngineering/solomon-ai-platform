@@ -1,10 +1,10 @@
 import { createCategoriesAction } from "@/actions/create-categories-action";
 import { getColorFromName } from "@/utils/categories";
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import {
   getCategoriesQuery,
   getCurrentUserTeamQuery,
-} from "@midday/supabase/queries";
+} from "@solomon/supabase/queries";
 import { ComboboxDropdown } from "@midday/ui/combobox-dropdown";
 import { useAction } from "next-safe-action/hooks";
 import { useEffect, useState } from "react";

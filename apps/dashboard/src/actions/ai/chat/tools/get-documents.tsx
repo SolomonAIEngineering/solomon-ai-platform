@@ -1,6 +1,6 @@
 import type { MutableAIState } from "@/actions/ai/types";
-import { getInboxSearchQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+import { getInboxSearchQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { nanoid } from "ai";
 import { z } from "zod";
 import { DocumentsUI } from "./ui/documents-ui";

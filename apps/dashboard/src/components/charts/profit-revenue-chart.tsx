@@ -1,4 +1,4 @@
-import { getMetrics } from "@midday/supabase/cached-queries";
+import { getMetrics } from "@solomon/supabase/cached-queries";
 import { cn } from "@midday/ui/cn";
 import { FormatAmount } from "../format-amount";
 import { BarChart } from "./bar-chart";

@@ -101,6 +101,7 @@ import { PiDiscordLogo } from "react-icons/pi";
 import { JSX } from "react/jsx-runtime";
 
 export const Icons = {
+  MoreHoriz: MdMoreHoriz,
   LogoSmall: (props: any) => (
     <svg
       version="1.1"

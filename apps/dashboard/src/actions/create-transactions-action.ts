@@ -1,8 +1,8 @@
 "use server";
 
 import { processPromisesBatch } from "@/utils/process";
-import { getUser } from "@midday/supabase/cached-queries";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { createClient } from "@solomon/supabase/server";
 import { revalidateTag } from "next/cache";
 import { action } from "./safe-action";
 import { createTransactionsSchema } from "./schema";

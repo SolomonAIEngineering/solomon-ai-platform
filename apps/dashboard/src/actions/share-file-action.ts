@@ -2,9 +2,9 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { getUser } from "@midday/supabase/cached-queries";
-import { createClient } from "@midday/supabase/server";
-import { share } from "@midday/supabase/storage";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { createClient } from "@solomon/supabase/server";
+import { share } from "@solomon/supabase/storage";
 import { Dub } from "dub";
 import { action } from "./safe-action";
 import { shareFileSchema } from "./schema";

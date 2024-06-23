@@ -2,8 +2,8 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { updateUser } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { updateUser } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { action } from "./safe-action";

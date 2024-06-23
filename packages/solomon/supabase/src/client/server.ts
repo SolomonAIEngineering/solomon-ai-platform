@@ -13,7 +13,7 @@ console.warn = (...args) => {
   const match = args.find((arg) =>
     typeof arg === "string"
       ? IGNORE_WARNINGS.find((warning) => arg.includes(warning))
-      : false
+      : false,
   );
   if (!match) {
     conWarn(...args);
@@ -24,7 +24,7 @@ console.log = (...args) => {
   const match = args.find((arg) =>
     typeof arg === "string"
       ? IGNORE_WARNINGS.find((warning) => arg.includes(warning))
-      : false
+      : false,
   );
   if (!match) {
     conLog(...args);
@@ -33,7 +33,7 @@ console.log = (...args) => {
 
 type CreateClientOptions = {
   admin?: boolean;
-  schema?: "public" | "storage";
+  schema?: "public" | "storage" | "cron";
 };
 
 export const createClient = (options?: CreateClientOptions) => {
@@ -47,10 +47,10 @@ export const createClient = (options?: CreateClientOptions) => {
 
   const auth = admin
     ? {
-        persistSession: false,
-        autoRefreshToken: false,
-        detectSessionInUrl: false,
-      }
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+    }
     : {};
 
   return createServerClient<Database>(
@@ -65,12 +65,12 @@ export const createClient = (options?: CreateClientOptions) => {
         set(name: string, value: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value, ...options });
-          } catch (error) {}
+          } catch (error) { }
         },
         remove(name: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value: "", ...options });
-          } catch (error) {}
+          } catch (error) { }
         },
       },
       auth,
@@ -80,6 +80,6 @@ export const createClient = (options?: CreateClientOptions) => {
           "user-agent": headers().get("user-agent") as string,
         },
       },
-    }
+    },
   );
 };

@@ -1,6 +1,6 @@
-import { getUser } from "@midday/supabase/cached-queries";
-import { createClient } from "@midday/supabase/server";
-import { download } from "@midday/supabase/storage";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { createClient } from "@solomon/supabase/server";
+import { download } from "@solomon/supabase/storage";
 
 export const preferredRegion = ["fra1", "sfo1", "iad1"];
 

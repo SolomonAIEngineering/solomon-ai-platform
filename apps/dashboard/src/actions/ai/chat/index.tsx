@@ -6,7 +6,7 @@ import { client as RedisClient } from "@midday/kv";
 import {
   getBankAccountsCurrencies,
   getUser,
-} from "@midday/supabase/cached-queries";
+} from "@solomon/supabase/cached-queries";
 import { Ratelimit } from "@upstash/ratelimit";
 import { nanoid } from "ai";
 import {

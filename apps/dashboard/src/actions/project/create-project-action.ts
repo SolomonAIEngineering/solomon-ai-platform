@@ -4,9 +4,9 @@ import { action } from "@/actions/safe-action";
 import { createProjectSchema } from "@/actions/schema";
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { getUser } from "@midday/supabase/cached-queries";
-import { createProject } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { createProject } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { revalidateTag } from "next/cache";
 
 export const createProjectAction = action(

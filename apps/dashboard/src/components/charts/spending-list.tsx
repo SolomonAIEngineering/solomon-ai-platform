@@ -2,7 +2,7 @@ import { Cookies } from "@/utils/constants";
 import {
   getBankAccountsCurrencies,
   getSpending,
-} from "@midday/supabase/cached-queries";
+} from "@solomon/supabase/cached-queries";
 import { Skeleton } from "@midday/ui/skeleton";
 import { cookies } from "next/headers";
 import { spendingData } from "./data";

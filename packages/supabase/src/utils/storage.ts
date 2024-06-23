@@ -67,7 +67,7 @@ export async function deleteFolder(
     return [decodeURIComponent([...path, file.name].join("/"))];
   });
 
-  return client.storage.from(bucket).remove(filesToRemove);
+  return client.storage.from(bucket).remove(filesToRemove || []);
 }
 
 type CreateFolderParams = {

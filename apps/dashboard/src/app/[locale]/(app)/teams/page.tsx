@@ -1,11 +1,11 @@
 import { SelectTeamTable } from "@/components/tables/select-team/table";
 import { UserMenu } from "@/components/user-menu";
-import { getUser } from "@midday/supabase/cached-queries";
+import { getUser } from "@solomon/supabase/cached-queries";
 import {
   getTeamsByUserIdQuery,
   // getUserInvitesQuery,
-} from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+} from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { Icons } from "@midday/ui/icons";
 import type { Metadata } from "next";
 import Link from "next/link";
