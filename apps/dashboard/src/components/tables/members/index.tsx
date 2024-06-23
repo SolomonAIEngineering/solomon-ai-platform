@@ -1,6 +1,6 @@
-import { getTeamUser } from "@midday/supabase/cached-queries";
-import { getTeamMembersQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+import { getTeamUser } from "@solomon/supabase/cached-queries";
+import { getTeamMembersQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { DataTable } from "./table";
 
 export async function MembersTable() {

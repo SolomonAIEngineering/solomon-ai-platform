@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/tables/tracker/data-table";
 import { getCountryInfo } from "@midday/location";
-import { getTrackerProjects, getUser } from "@midday/supabase/cached-queries";
+import { getTrackerProjects, getUser } from "@solomon/supabase/cached-queries";
 import { EmptyState, NoResults } from "./empty-states";
 
 const pageSize = 20;

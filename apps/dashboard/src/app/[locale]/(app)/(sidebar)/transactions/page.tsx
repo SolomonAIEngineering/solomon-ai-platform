@@ -7,7 +7,7 @@ import { TransactionsActions } from "@/components/transactions-actions";
 import {
   getCategories,
   getTeamBankAccounts,
-} from "@midday/supabase/cached-queries";
+} from "@solomon/supabase/cached-queries";
 import { cn } from "@midday/ui/cn";
 import type { Metadata } from "next";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";

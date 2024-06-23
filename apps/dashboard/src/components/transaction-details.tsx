@@ -1,12 +1,12 @@
 import type { UpdateTransactionValues } from "@/actions/schema";
 import { updateSimilarTransactionsAction } from "@/actions/update-similar-transactions-action";
 import { useI18n } from "@/locales/client";
-import { createClient } from "@midday/supabase/client";
-import { getTransactionQuery } from "@midday/supabase/queries";
+import { createClient } from "@solomon/supabase/client";
+import { getTransactionQuery } from "@solomon/supabase/queries";
 import {
   getCurrentUserTeamQuery,
   getSimilarTransactions,
-} from "@midday/supabase/queries";
+} from "@solomon/supabase/queries";
 import {
   Accordion,
   AccordionContent,

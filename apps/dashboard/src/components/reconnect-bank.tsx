@@ -1,4 +1,4 @@
-import { getBankConnectionsByTeamId } from "@midday/supabase/cached-queries";
+import { getBankConnectionsByTeamId } from "@solomon/supabase/cached-queries";
 import { Avatar, AvatarImage } from "@midday/ui/avatar";
 import { Button } from "@midday/ui/button";
 import { cn } from "@midday/ui/cn";

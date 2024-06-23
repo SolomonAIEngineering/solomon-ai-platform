@@ -2,9 +2,9 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { getUser } from "@midday/supabase/cached-queries";
-import { deleteAttachment } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { deleteAttachment } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { revalidateTag } from "next/cache";
 import { action } from "./safe-action";
 import { deleteAttachmentSchema } from "./schema";

@@ -1,6 +1,6 @@
 "use server";
 
-import { getUser } from "@midday/supabase/cached-queries";
+import { getUser } from "@solomon/supabase/cached-queries";
 import { revalidateTag } from "next/cache";
 import { action } from "./safe-action";
 import { changeChartPeriodSchema } from "./schema";

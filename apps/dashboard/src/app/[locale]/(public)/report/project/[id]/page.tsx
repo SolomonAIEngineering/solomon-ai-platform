@@ -1,6 +1,6 @@
 import { TrackerGraph } from "@/components/tracker-graph/tracker-graph";
-import { getTrackerRecordsByRangeQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+import { getTrackerRecordsByRangeQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { Button } from "@midday/ui/button";
 import { endOfMonth, formatISO, startOfMonth, subMonths } from "date-fns";
 import type { Metadata } from "next";

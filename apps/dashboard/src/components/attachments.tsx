@@ -3,8 +3,8 @@
 import { createAttachmentsAction } from "@/actions/create-attachments-action";
 import { deleteAttachmentAction } from "@/actions/delete-attachment-action";
 import { useUpload } from "@/hooks/use-upload";
-import { createClient } from "@midday/supabase/client";
-import { getCurrentUserTeamQuery } from "@midday/supabase/queries";
+import { createClient } from "@solomon/supabase/client";
+import { getCurrentUserTeamQuery } from "@solomon/supabase/queries";
 import { cn } from "@midday/ui/cn";
 import { useToast } from "@midday/ui/use-toast";
 import { stripSpecialCharacters } from "@midday/utils";

@@ -1,7 +1,15 @@
 import { cn } from "@midday/ui/cn";
 import { Icons } from "@midday/ui/icons";
 
-export function FileIcon({ mimetype, name, isFolder, size = 16, className }) {
+interface FileIconProps {
+  mimetype?: string;
+  name?: string;
+  isFolder?: boolean;
+  size?: number;
+  className?: string;
+}
+
+export function FileIcon({ mimetype, name, isFolder, size = 16, className }: FileIconProps) {
   if (name === "exports") {
     return (
       <Icons.DriveFileMove

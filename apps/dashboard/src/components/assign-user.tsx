@@ -1,8 +1,8 @@
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import {
   getCurrentUserTeamQuery,
   getTeamMembersQuery,
-} from "@midday/supabase/queries";
+} from "@solomon/supabase/queries";
 import {
   Select,
   SelectContent,

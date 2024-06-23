@@ -1,4 +1,4 @@
-import { getSession } from "@midday/supabase/cached-queries";
+import { getSession } from "@solomon/supabase/cached-queries";
 
 export async function GET(req) {
   const requestUrl = new URL(req.url);

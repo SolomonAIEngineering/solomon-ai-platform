@@ -6,7 +6,7 @@ import { Cookies } from "@/utils/constants";
 import {
   getBankAccountsCurrencies,
   getTeamBankAccounts,
-} from "@midday/supabase/cached-queries";
+} from "@solomon/supabase/cached-queries";
 import { cn } from "@midday/ui/cn";
 import { startOfMonth, startOfYear, subMonths } from "date-fns";
 import type { Metadata } from "next";

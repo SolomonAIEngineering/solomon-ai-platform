@@ -1,6 +1,6 @@
 "use client";
 
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import { Button } from "@midday/ui/button";
 import { Icons } from "@midday/ui/icons";
 import { isDesktopApp } from "@todesktop/client-core/platform/todesktop";

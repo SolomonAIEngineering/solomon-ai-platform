@@ -47,11 +47,12 @@ export const createClient = (options?: CreateClientOptions) => {
 
   const auth = admin
     ? {
-        persistSession: false,
-        autoRefreshToken: false,
-        detectSessionInUrl: false,
-      }
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+    }
     : {};
+
 
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -65,12 +66,12 @@ export const createClient = (options?: CreateClientOptions) => {
         set(name: string, value: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value, ...options });
-          } catch (error) {}
+          } catch (error) { }
         },
         remove(name: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value: "", ...options });
-          } catch (error) {}
+          } catch (error) { }
         },
       },
       auth,

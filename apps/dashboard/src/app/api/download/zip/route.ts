@@ -1,7 +1,7 @@
-import { getUser } from "@midday/supabase/cached-queries";
-import { getVaultRecursiveQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
-import { download } from "@midday/supabase/storage";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { getVaultRecursiveQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
+import { download } from "@solomon/supabase/storage";
 import { BlobReader, BlobWriter, ZipWriter } from "@zip.js/zip.js";
 
 export const preferredRegion = ["fra1", "sfo1", "iad1"];

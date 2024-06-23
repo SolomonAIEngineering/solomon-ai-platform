@@ -1,4 +1,4 @@
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import { Button } from "@midday/ui/button";
 import {
   Collapsible,

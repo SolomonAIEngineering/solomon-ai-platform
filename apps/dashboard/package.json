@@ -1,5 +1,5 @@
 {
-  "name": "@midday/dashboard",
+  "name": "@solomon/webapp",
   "version": "1.0.0",
   "private": true,
   "author": {
@@ -33,7 +33,7 @@
     "@midday/location": "workspace:*",
     "@midday/notification": "workspace:*",
     "@midday/providers": "workspace:*",
-    "@midday/supabase": "workspace:*",
+    "@solomon/supabase": "workspace:*",
     "@midday/ui": "workspace:*",
     "@midday/utils": "workspace:*",
     "@novu/headless": "^0.24.2",

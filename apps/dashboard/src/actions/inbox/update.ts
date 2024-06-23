@@ -2,9 +2,9 @@
 
 import { action } from "@/actions/safe-action";
 import { updateInboxSchema } from "@/actions/schema";
-import { getUser } from "@midday/supabase/cached-queries";
-import { updateInboxById } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { updateInboxById } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 
 export const updateInboxAction = action(updateInboxSchema, async (params) => {
