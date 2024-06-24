@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@midday/supabase/server";
+import { createClient } from "@solomon/supabase/server";
 import { revalidatePath } from "next/cache";
 import { action } from "./safe-action";
 import { unenrollMfaSchema } from "./schema";
@@ -12,7 +12,7 @@ export const unenrollMfaAction = action(
 
     const { data, error } = await supabase.auth.mfa.unenroll({
       factorId,
-      issuer: "app.midday.ai",
+      issuer: "app.solomon-ai.app",
     });
 
     if (error) {

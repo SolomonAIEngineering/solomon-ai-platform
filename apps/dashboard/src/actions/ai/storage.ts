@@ -2,7 +2,7 @@
 
 import { client as RedisClient } from "@midday/kv";
 import { getCountryCode, isEUCountry } from "@midday/location";
-import { getSession } from "@midday/supabase/cached-queries";
+import { getSession } from "@solomon/supabase/cached-queries";
 import type { Chat, SettingsResponse } from "./types";
 
 export async function getAssistantSettings(): Promise<SettingsResponse> {

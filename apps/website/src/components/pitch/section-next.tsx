@@ -26,7 +26,7 @@ export function SectionNext() {
             </Card>
 
             <a
-              href="https://midday.ai/engine"
+              href="https://solomon-ai.app/engine"
               target="_blank"
               rel="noreferrer"
               className="block"

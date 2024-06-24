@@ -1,0 +1,12 @@
+{
+  "extends": ["@solomon/tsconfig/base.json"],
+  "compilerOptions": {
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "noImplicitAny": false
+  },
+  "include": ["**/*.ts", "**/*.js"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "off",
+    " @typescript-eslint/no-require-imports": "off"
+  },
+}

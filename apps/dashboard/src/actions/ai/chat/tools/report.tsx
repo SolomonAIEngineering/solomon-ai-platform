@@ -1,5 +1,6 @@
 import type { MutableAIState } from "@/actions/ai/types";
-import { createClient } from "@midday/supabase/server";
+import { createClient } from "@solomon/supabase/server";
+import { nanoid } from "ai";
 import { startOfMonth } from "date-fns";
 import { Dub } from "dub";
 import { nanoid } from "nanoid";
@@ -64,7 +65,7 @@ export function createReport({
         .single();
 
       const link = await dub.links.create({
-        url: `https://app.midday.ai/report/${data.id}`,
+        url: `https://app.solomon-ai.app/report/${data.id}`,
         expiresAt,
         rewrite: true,
       });

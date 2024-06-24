@@ -1,5 +1,5 @@
 import { PlaidApi } from "@midday/providers/src/plaid/plaid-api";
-import { getSession } from "@midday/supabase/cached-queries";
+import { getSession } from "@solomon/supabase/cached-queries";
 import { NextResponse } from "next/server";
 
 export async function POST() {

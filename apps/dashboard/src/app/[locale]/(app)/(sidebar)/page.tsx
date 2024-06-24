@@ -6,7 +6,7 @@ import { Cookies } from "@/utils/constants";
 import {
   getBankAccountsCurrencies,
   getTeamBankAccounts,
-} from "@midday/supabase/cached-queries";
+} from "@solomon/supabase/cached-queries";
 import { cn } from "@midday/ui/cn";
 import { startOfMonth, startOfYear, subMonths } from "date-fns";
 import type { Metadata } from "next";
@@ -17,7 +17,7 @@ import { cookies } from "next/headers";
 export const maxDuration = 30;
 
 export const metadata: Metadata = {
-  title: "Overview | Midday",
+  title: "Overview | Solomon AI",
 };
 
 const defaultValue = {
@@ -37,10 +37,10 @@ export default async function Overview({ searchParams }) {
   const initialPeriod = cookies().has(Cookies.SpendingPeriod)
     ? JSON.parse(cookies().get(Cookies.SpendingPeriod)?.value)
     : {
-        id: "this_month",
-        from: startOfYear(new Date()).toISOString(),
-        to: new Date().toISOString(),
-      };
+      id: "this_month",
+      from: startOfYear(new Date()).toISOString(),
+      to: new Date().toISOString(),
+    };
 
   const value = {
     ...(searchParams.from && { from: searchParams.from }),

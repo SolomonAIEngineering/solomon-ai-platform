@@ -51,7 +51,6 @@ packages/email/public
 
 # Storybook
 storybook-static
-tailwind.css
 
 # Supabase
 .branches
@@ -65,4 +64,3 @@ tailwind.css
 
 /dist
 */.wrangler/*
-*/config.toml

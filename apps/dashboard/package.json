@@ -1,12 +1,19 @@
 {
-  "name": "@midday/dashboard",
+  "name": "@solomon/webapp",
   "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "Solomon AI Team",
+    "email": "engineering@solomon-ai.co"
+  },
+  "main": "main.ts",
+  "homepage": "https://app.solomon-ai.app",
   "scripts": {
     "build": "NODE_ENV=production next build",
     "clean": "git clean -xdf .next .turbo node_modules",
     "jobs": "bunx @trigger.dev/cli@latest dev -p 3000 --client-id=solomon-ai-OEsD",
-    "dev": "npm run start-database && next dev -p 3000",
+    "dev": "bun run start-database && next dev -p 3000",
+    "local": "next dev -p 3000",
     "lint": "next lint",
     "format": "biome format --write .",
     "start": "next start",
@@ -27,7 +34,7 @@
     "@midday/location": "workspace:*",
     "@midday/notification": "workspace:*",
     "@midday/providers": "workspace:*",
-    "@midday/supabase": "workspace:*",
+    "@solomon/supabase": "workspace:*",
     "@midday/ui": "workspace:*",
     "@midday/utils": "workspace:*",
     "@novu/headless": "^0.24.2",
@@ -83,6 +90,7 @@
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "electron": "31.0.1",
     "typescript": "^5.4.5"
   }
 }

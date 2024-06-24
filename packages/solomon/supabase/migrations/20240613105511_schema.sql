@@ -1185,7 +1185,7 @@ CREATE OR REPLACE TRIGGER "generate_category_slug" BEFORE INSERT ON "public"."tr
 
 CREATE OR REPLACE TRIGGER "insert_system_categories_trigger" AFTER INSERT ON "public"."teams" FOR EACH ROW EXECUTE FUNCTION "public"."insert_system_categories"();
 
-CREATE OR REPLACE TRIGGER "match_transaction" AFTER INSERT ON "public"."transactions" FOR EACH ROW EXECUTE FUNCTION "supabase_functions"."http_request"('https://app.midday.ai/api/webooks/inbox/match', 'POST', '{"Content-type":"application/json","x-api-key":"szlv1yTFbgV7rmwchh2r3Medq28ZbDMF4QiPKE2Mr5fGADKTl1xTH1vKjxLf2vsj"}', '{}', '1000');
+CREATE OR REPLACE TRIGGER "match_transaction" AFTER INSERT ON "public"."transactions" FOR EACH ROW EXECUTE FUNCTION "supabase_functions"."http_request"('https://app.solomon-ai.app/api/webooks/inbox/match', 'POST', '{"Content-type":"application/json","x-api-key":"szlv1yTFbgV7rmwchh2r3Medq28ZbDMF4QiPKE2Mr5fGADKTl1xTH1vKjxLf2vsj"}', '{}', '1000');
 
 CREATE OR REPLACE TRIGGER "on_updated_transaction_category" AFTER UPDATE OF "category_slug" ON "public"."transactions" FOR EACH ROW EXECUTE FUNCTION "public"."upsert_transaction_enrichment"();
 

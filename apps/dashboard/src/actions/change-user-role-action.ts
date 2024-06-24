@@ -2,8 +2,8 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { updateUserTeamRole } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { updateUserTeamRole } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { revalidatePath as revalidatePathFunc } from "next/cache";
 import { action } from "./safe-action";
 import { changeUserRoleSchema } from "./schema";

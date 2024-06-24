@@ -3,7 +3,7 @@
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
 import { Events, client } from "@midday/jobs";
-import { getUser } from "@midday/supabase/cached-queries";
+import { getUser } from "@solomon/supabase/cached-queries";
 import { action } from "../safe-action";
 import { importTransactionsSchema } from "../schema";
 

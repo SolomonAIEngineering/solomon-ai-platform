@@ -1,0 +1,62 @@
+name: Update database types
+
+on:
+  schedule:
+    # sets the action to run daily. You can modify this to run the action more or less frequently
+    - cron: "0 0 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        directory:
+          - packages/solomon/supabase
+    env:
+      ## We tie the project ref to the staging database as the staging database will be primarily
+      ## where we work off of changes and perform most migrations from
+      PROJECT_REF: ${{ secrets.STAGING_PROJECT_ID }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PRODUCTION_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ secrets.PRODUCTION_PROJECT_ID }}
+      SUPABASE_AUTH_GITHUB_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_GITHUB_CLIENT_ID }}
+      SUPABASE_AUTH_GITHUB_CLIENT_SECRET: ${{ secrets.SUPABASE_AUTH_GITHUB_CLIENT_SECRET }}
+      SUPABASE_AUTH_GOOGLE_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_GOOGLE_CLIENT_ID }}
+      SUPABASE_AUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.SUPABASE_AUTH_GOOGLE_CLIENT_SECRET }}
+      SUPABASE_AUTH_APPLE_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_APPLE_CLIENT_ID }}
+      SUPABASE_AUTH_APPLE_SECRET: ${{ secrets.SUPABASE_AUTH_APPLE_SECRET }}
+      SUPABASE_AUTH_SLACK_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_SLACK_CLIENT_ID }}
+      SUPABASE_AUTH_SLACK_SECRET: ${{ secrets.SUPABASE_AUTH_SLACK_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+      - run: bun run db:generate
+        working-directory: ${{ matrix.directory }}
+      - name: check for file changes
+        id: git_status
+        run: |
+          echo "status=$(git status -s)" >> $GITHUB_OUTPUT
+        working-directory: ${{ matrix.directory }}
+      - name: Commit files
+        if: ${{contains(steps.git_status.outputs.status, ' ')}}
+        run: |
+          git add src/types/db.ts
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Update database types" -a
+        working-directory: ${{ matrix.directory }}
+      - name: Push changes
+        if: ${{contains(steps.git_status.outputs.status, ' ')}}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

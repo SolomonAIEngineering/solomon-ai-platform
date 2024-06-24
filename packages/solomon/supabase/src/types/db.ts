@@ -7,8 +7,182 @@ export type Json =
   | Json[];
 
 export type Database = {
+  cron: {
+    Tables: {
+      job: {
+        Row: {
+          active: boolean;
+          command: string;
+          database: string;
+          jobid: number;
+          jobname: string | null;
+          nodename: string;
+          nodeport: number;
+          schedule: string;
+          username: string;
+        };
+        Insert: {
+          active?: boolean;
+          command: string;
+          database?: string;
+          jobid?: number;
+          jobname?: string | null;
+          nodename?: string;
+          nodeport?: number;
+          schedule: string;
+          username?: string;
+        };
+        Update: {
+          active?: boolean;
+          command?: string;
+          database?: string;
+          jobid?: number;
+          jobname?: string | null;
+          nodename?: string;
+          nodeport?: number;
+          schedule?: string;
+          username?: string;
+        };
+        Relationships: [];
+      };
+      job_run_details: {
+        Row: {
+          command: string | null;
+          database: string | null;
+          end_time: string | null;
+          job_pid: number | null;
+          jobid: number | null;
+          return_message: string | null;
+          runid: number;
+          start_time: string | null;
+          status: string | null;
+          username: string | null;
+        };
+        Insert: {
+          command?: string | null;
+          database?: string | null;
+          end_time?: string | null;
+          job_pid?: number | null;
+          jobid?: number | null;
+          return_message?: string | null;
+          runid?: number;
+          start_time?: string | null;
+          status?: string | null;
+          username?: string | null;
+        };
+        Update: {
+          command?: string | null;
+          database?: string | null;
+          end_time?: string | null;
+          job_pid?: number | null;
+          jobid?: number | null;
+          return_message?: string | null;
+          runid?: number;
+          start_time?: string | null;
+          status?: string | null;
+          username?: string | null;
+        };
+        Relationships: [];
+      };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      alter_job: {
+        Args: {
+          job_id: number;
+          schedule?: string;
+          command?: string;
+          database?: string;
+          username?: string;
+          active?: boolean;
+        };
+        Returns: undefined;
+      };
+      schedule:
+      | {
+        Args: {
+          job_name: string;
+          schedule: string;
+          command: string;
+        };
+        Returns: number;
+      }
+      | {
+        Args: {
+          schedule: string;
+          command: string;
+        };
+        Returns: number;
+      };
+      schedule_in_database: {
+        Args: {
+          job_name: string;
+          schedule: string;
+          command: string;
+          database: string;
+          username?: string;
+          active?: boolean;
+        };
+        Returns: number;
+      };
+      unschedule:
+      | {
+        Args: {
+          job_id: number;
+        };
+        Returns: boolean;
+      }
+      | {
+        Args: {
+          job_name: string;
+        };
+        Returns: boolean;
+      };
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
+    };
+  };
   public: {
     Tables: {
+      account_balance_history: {
+        Row: {
+          accountid: string | null;
+          balance: number | null;
+          id: string | null;
+          isocurrencycode: string | null;
+          profiletype: string | null;
+          sign: number | null;
+          time: string | null;
+          userid: string | null;
+        };
+        Insert: {
+          accountid?: string | null;
+          balance?: number | null;
+          id?: string | null;
+          isocurrencycode?: string | null;
+          profiletype?: string | null;
+          sign?: number | null;
+          time?: string | null;
+          userid?: string | null;
+        };
+        Update: {
+          accountid?: string | null;
+          balance?: number | null;
+          id?: string | null;
+          isocurrencycode?: string | null;
+          profiletype?: string | null;
+          sign?: number | null;
+          time?: string | null;
+          userid?: string | null;
+        };
+        Relationships: [];
+      };
       bank_accounts: {
         Row: {
           account_id: string;
@@ -73,7 +247,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       bank_connections: {
@@ -120,7 +294,45 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
+        ];
+      };
+      cron_job_state: {
+        Row: {
+          job_name: string;
+          last_processed: string | null;
+        };
+        Insert: {
+          job_name: string;
+          last_processed?: string | null;
+        };
+        Update: {
+          job_name?: string;
+          last_processed?: string | null;
+        };
+        Relationships: [];
+      };
+      customers: {
+        Row: {
+          id: string;
+          stripe_customer_id: string | null;
+        };
+        Insert: {
+          id: string;
+          stripe_customer_id?: string | null;
+        };
+        Update: {
+          id?: string;
+          stripe_customer_id?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "customers_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
         ];
       };
       inbox: {
@@ -209,8 +421,173 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "transactions";
             referencedColumns: ["id"];
-          }
+          },
         ];
+      };
+      prices: {
+        Row: {
+          active: boolean | null;
+          currency: string | null;
+          description: string | null;
+          id: string;
+          interval: Database["public"]["Enums"]["pricing_plan_interval"] | null;
+          interval_count: number | null;
+          metadata: Json | null;
+          product_id: string | null;
+          trial_period_days: number | null;
+          type: Database["public"]["Enums"]["pricing_type"] | null;
+          unit_amount: number | null;
+        };
+        Insert: {
+          active?: boolean | null;
+          currency?: string | null;
+          description?: string | null;
+          id: string;
+          interval?:
+          | Database["public"]["Enums"]["pricing_plan_interval"]
+          | null;
+          interval_count?: number | null;
+          metadata?: Json | null;
+          product_id?: string | null;
+          trial_period_days?: number | null;
+          type?: Database["public"]["Enums"]["pricing_type"] | null;
+          unit_amount?: number | null;
+        };
+        Update: {
+          active?: boolean | null;
+          currency?: string | null;
+          description?: string | null;
+          id?: string;
+          interval?:
+          | Database["public"]["Enums"]["pricing_plan_interval"]
+          | null;
+          interval_count?: number | null;
+          metadata?: Json | null;
+          product_id?: string | null;
+          trial_period_days?: number | null;
+          type?: Database["public"]["Enums"]["pricing_type"] | null;
+          unit_amount?: number | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "prices_product_id_fkey";
+            columns: ["product_id"];
+            isOneToOne: false;
+            referencedRelation: "products";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      products: {
+        Row: {
+          active: boolean | null;
+          description: string | null;
+          id: string;
+          image: string | null;
+          metadata: Json | null;
+          name: string | null;
+        };
+        Insert: {
+          active?: boolean | null;
+          description?: string | null;
+          id: string;
+          image?: string | null;
+          metadata?: Json | null;
+          name?: string | null;
+        };
+        Update: {
+          active?: boolean | null;
+          description?: string | null;
+          id?: string;
+          image?: string | null;
+          metadata?: Json | null;
+          name?: string | null;
+        };
+        Relationships: [];
+      };
+      recurring_transaction_internal: {
+        Row: {
+          accountid: string | null;
+          averageamount: string | null;
+          averageamountisocurrencycode: string | null;
+          categoryid: string | null;
+          description: string | null;
+          firstdate: string | null;
+          flow: string | null;
+          frequency: string | null;
+          id: string | null;
+          isactive: boolean | null;
+          lastamount: string | null;
+          lastamountisocurrencycode: string | null;
+          lastdate: string | null;
+          linkid: number | null;
+          merchantname: string | null;
+          personalfinancecategorydetailed: string | null;
+          personalfinancecategoryprimary: string | null;
+          profiletype: string | null;
+          sign: number | null;
+          status: string | null;
+          streamid: string | null;
+          time: string | null;
+          transactionids: string | null;
+          updatedtime: string | null;
+          userid: string | null;
+        };
+        Insert: {
+          accountid?: string | null;
+          averageamount?: string | null;
+          averageamountisocurrencycode?: string | null;
+          categoryid?: string | null;
+          description?: string | null;
+          firstdate?: string | null;
+          flow?: string | null;
+          frequency?: string | null;
+          id?: string | null;
+          isactive?: boolean | null;
+          lastamount?: string | null;
+          lastamountisocurrencycode?: string | null;
+          lastdate?: string | null;
+          linkid?: number | null;
+          merchantname?: string | null;
+          personalfinancecategorydetailed?: string | null;
+          personalfinancecategoryprimary?: string | null;
+          profiletype?: string | null;
+          sign?: number | null;
+          status?: string | null;
+          streamid?: string | null;
+          time?: string | null;
+          transactionids?: string | null;
+          updatedtime?: string | null;
+          userid?: string | null;
+        };
+        Update: {
+          accountid?: string | null;
+          averageamount?: string | null;
+          averageamountisocurrencycode?: string | null;
+          categoryid?: string | null;
+          description?: string | null;
+          firstdate?: string | null;
+          flow?: string | null;
+          frequency?: string | null;
+          id?: string | null;
+          isactive?: boolean | null;
+          lastamount?: string | null;
+          lastamountisocurrencycode?: string | null;
+          lastdate?: string | null;
+          linkid?: number | null;
+          merchantname?: string | null;
+          personalfinancecategorydetailed?: string | null;
+          personalfinancecategoryprimary?: string | null;
+          profiletype?: string | null;
+          sign?: number | null;
+          status?: string | null;
+          streamid?: string | null;
+          time?: string | null;
+          transactionids?: string | null;
+          updatedtime?: string | null;
+          userid?: string | null;
+        };
+        Relationships: [];
       };
       reports: {
         Row: {
@@ -266,7 +643,76 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
+        ];
+      };
+      subscriptions: {
+        Row: {
+          cancel_at: string | null;
+          cancel_at_period_end: boolean | null;
+          canceled_at: string | null;
+          created: string;
+          current_period_end: string;
+          current_period_start: string;
+          ended_at: string | null;
+          id: string;
+          metadata: Json | null;
+          price_id: string | null;
+          quantity: number | null;
+          status: Database["public"]["Enums"]["subscription_status"] | null;
+          trial_end: string | null;
+          trial_start: string | null;
+          user_id: string;
+        };
+        Insert: {
+          cancel_at?: string | null;
+          cancel_at_period_end?: boolean | null;
+          canceled_at?: string | null;
+          created?: string;
+          current_period_end?: string;
+          current_period_start?: string;
+          ended_at?: string | null;
+          id: string;
+          metadata?: Json | null;
+          price_id?: string | null;
+          quantity?: number | null;
+          status?: Database["public"]["Enums"]["subscription_status"] | null;
+          trial_end?: string | null;
+          trial_start?: string | null;
+          user_id: string;
+        };
+        Update: {
+          cancel_at?: string | null;
+          cancel_at_period_end?: boolean | null;
+          canceled_at?: string | null;
+          created?: string;
+          current_period_end?: string;
+          current_period_start?: string;
+          ended_at?: string | null;
+          id?: string;
+          metadata?: Json | null;
+          price_id?: string | null;
+          quantity?: number | null;
+          status?: Database["public"]["Enums"]["subscription_status"] | null;
+          trial_end?: string | null;
+          trial_start?: string | null;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_price_id_fkey";
+            columns: ["price_id"];
+            isOneToOne: false;
+            referencedRelation: "prices";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "subscriptions_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
         ];
       };
       teams: {
@@ -370,7 +816,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       tracker_projects: {
@@ -419,7 +865,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       tracker_reports: {
@@ -471,7 +917,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       transaction_attachments: {
@@ -519,7 +965,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "transactions";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       transaction_categories: {
@@ -566,7 +1012,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       transaction_enrichments: {
@@ -608,82 +1054,202 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       transactions: {
         Row: {
+          account_id: string;
+          account_owner: string | null;
           amount: number;
           assigned_id: string | null;
+          authorized_date: string | null;
+          authorized_datetime: string | null;
           balance: number | null;
           bank_account_id: string | null;
           category: Database["public"]["Enums"]["transactionCategories"] | null;
+          category_id: string | null;
           category_slug: string | null;
+          check_number: string | null;
           created_at: string;
           currency: string;
           currency_rate: number | null;
           currency_source: string | null;
           date: string;
+          datetime: string | null;
           description: string | null;
           id: string;
+          inserted_at: string | null;
           internal_id: string;
+          iso_currency_code: string | null;
+          location_address: string | null;
+          location_city: string | null;
+          location_country: string | null;
+          location_lat: number | null;
+          location_lon: number | null;
+          location_postal_code: string | null;
+          location_region: string | null;
+          location_store_number: string | null;
+          logo_url: string | null;
           manual: boolean | null;
+          merchant_entity_id: string | null;
+          merchant_name: string | null;
           method: Database["public"]["Enums"]["transactionMethods"];
           name: string;
           note: string | null;
+          payment_channel: string | null;
+          payment_meta_by_order_of: string | null;
+          payment_meta_payee: string | null;
+          payment_meta_payer: string | null;
+          payment_meta_payment_method: string | null;
+          payment_meta_payment_processor: string | null;
+          payment_meta_ppd_id: string | null;
+          payment_meta_reason: string | null;
+          payment_meta_reference_number: string | null;
+          pending: boolean | null;
+          pending_transaction_id: string | null;
+          personal_finance_category_confidence_level: string | null;
+          personal_finance_category_detailed: string | null;
+          personal_finance_category_icon_url: string | null;
+          personal_finance_category_primary: string | null;
           status: Database["public"]["Enums"]["transactionStatus"] | null;
           team_id: string;
+          transaction_code: string | null;
+          transaction_id: string | null;
+          transaction_type: string | null;
+          unofficial_currency_code: string | null;
+          website: string | null;
           amount_text: string | null;
           calculated_vat: number | null;
           is_fulfilled: boolean | null;
         };
         Insert: {
+          account_id: string;
+          account_owner?: string | null;
           amount: number;
           assigned_id?: string | null;
+          authorized_date?: string | null;
+          authorized_datetime?: string | null;
           balance?: number | null;
           bank_account_id?: string | null;
           category?:
           | Database["public"]["Enums"]["transactionCategories"]
           | null;
+          category_id?: string | null;
           category_slug?: string | null;
+          check_number?: string | null;
           created_at?: string;
           currency: string;
           currency_rate?: number | null;
           currency_source?: string | null;
           date: string;
+          datetime?: string | null;
           description?: string | null;
           id?: string;
+          inserted_at?: string | null;
           internal_id: string;
+          iso_currency_code?: string | null;
+          location_address?: string | null;
+          location_city?: string | null;
+          location_country?: string | null;
+          location_lat?: number | null;
+          location_lon?: number | null;
+          location_postal_code?: string | null;
+          location_region?: string | null;
+          location_store_number?: string | null;
+          logo_url?: string | null;
           manual?: boolean | null;
+          merchant_entity_id?: string | null;
+          merchant_name?: string | null;
           method: Database["public"]["Enums"]["transactionMethods"];
           name: string;
           note?: string | null;
+          payment_channel?: string | null;
+          payment_meta_by_order_of?: string | null;
+          payment_meta_payee?: string | null;
+          payment_meta_payer?: string | null;
+          payment_meta_payment_method?: string | null;
+          payment_meta_payment_processor?: string | null;
+          payment_meta_ppd_id?: string | null;
+          payment_meta_reason?: string | null;
+          payment_meta_reference_number?: string | null;
+          pending?: boolean | null;
+          pending_transaction_id?: string | null;
+          personal_finance_category_confidence_level?: string | null;
+          personal_finance_category_detailed?: string | null;
+          personal_finance_category_icon_url?: string | null;
+          personal_finance_category_primary?: string | null;
           status?: Database["public"]["Enums"]["transactionStatus"] | null;
           team_id: string;
+          transaction_code?: string | null;
+          transaction_id?: string | null;
+          transaction_type?: string | null;
+          unofficial_currency_code?: string | null;
+          website?: string | null;
         };
         Update: {
+          account_id?: string;
+          account_owner?: string | null;
           amount?: number;
           assigned_id?: string | null;
+          authorized_date?: string | null;
+          authorized_datetime?: string | null;
           balance?: number | null;
           bank_account_id?: string | null;
           category?:
           | Database["public"]["Enums"]["transactionCategories"]
           | null;
+          category_id?: string | null;
           category_slug?: string | null;
+          check_number?: string | null;
           created_at?: string;
           currency?: string;
           currency_rate?: number | null;
           currency_source?: string | null;
           date?: string;
+          datetime?: string | null;
           description?: string | null;
           id?: string;
+          inserted_at?: string | null;
           internal_id?: string;
+          iso_currency_code?: string | null;
+          location_address?: string | null;
+          location_city?: string | null;
+          location_country?: string | null;
+          location_lat?: number | null;
+          location_lon?: number | null;
+          location_postal_code?: string | null;
+          location_region?: string | null;
+          location_store_number?: string | null;
+          logo_url?: string | null;
           manual?: boolean | null;
+          merchant_entity_id?: string | null;
+          merchant_name?: string | null;
           method?: Database["public"]["Enums"]["transactionMethods"];
           name?: string;
           note?: string | null;
+          payment_channel?: string | null;
+          payment_meta_by_order_of?: string | null;
+          payment_meta_payee?: string | null;
+          payment_meta_payer?: string | null;
+          payment_meta_payment_method?: string | null;
+          payment_meta_payment_processor?: string | null;
+          payment_meta_ppd_id?: string | null;
+          payment_meta_reason?: string | null;
+          payment_meta_reference_number?: string | null;
+          pending?: boolean | null;
+          pending_transaction_id?: string | null;
+          personal_finance_category_confidence_level?: string | null;
+          personal_finance_category_detailed?: string | null;
+          personal_finance_category_icon_url?: string | null;
+          personal_finance_category_primary?: string | null;
           status?: Database["public"]["Enums"]["transactionStatus"] | null;
           team_id?: string;
+          transaction_code?: string | null;
+          transaction_id?: string | null;
+          transaction_type?: string | null;
+          unofficial_currency_code?: string | null;
+          website?: string | null;
         };
         Relationships: [
           {
@@ -713,8 +1279,146 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "transaction_categories";
             referencedColumns: ["slug", "team_id"];
-          }
+          },
         ];
+      };
+      transactions_internal: {
+        Row: {
+          accountid: string | null;
+          accountowner: string | null;
+          amount: number | null;
+          authorizeddate: string | null;
+          authorizeddatetime: string | null;
+          categories: string[] | null;
+          categoryid: string | null;
+          checknumber: string | null;
+          currentdate: string | null;
+          currentdatetime: string | null;
+          id: string | null;
+          isocurrencycode: string | null;
+          linkid: number | null;
+          locationaddress: string | null;
+          locationcity: string | null;
+          locationcountry: string | null;
+          locationlat: number | null;
+          locationlon: number | null;
+          locationpostalcode: string | null;
+          locationregion: string | null;
+          locationstorenumber: string | null;
+          merchantname: string | null;
+          name: string | null;
+          paymentchannel: string | null;
+          paymentmetabyorderof: string | null;
+          paymentmetapayee: string | null;
+          paymentmetapayer: string | null;
+          paymentmetapaymentmethod: string | null;
+          paymentmetapaymentprocessor: string | null;
+          paymentmetappdid: string | null;
+          paymentmetareason: string | null;
+          paymentmetareferencenumber: string | null;
+          pending: boolean | null;
+          pendingtransactionid: string | null;
+          personalfinancecategorydetailed: string | null;
+          personalfinancecategoryprimary: string | null;
+          profiletype: string | null;
+          sign: number | null;
+          time: string | null;
+          transactioncode: string | null;
+          transactionid: string | null;
+          unofficialcurrencycode: string | null;
+          userid: string | null;
+        };
+        Insert: {
+          accountid?: string | null;
+          accountowner?: string | null;
+          amount?: number | null;
+          authorizeddate?: string | null;
+          authorizeddatetime?: string | null;
+          categories?: string[] | null;
+          categoryid?: string | null;
+          checknumber?: string | null;
+          currentdate?: string | null;
+          currentdatetime?: string | null;
+          id?: string | null;
+          isocurrencycode?: string | null;
+          linkid?: number | null;
+          locationaddress?: string | null;
+          locationcity?: string | null;
+          locationcountry?: string | null;
+          locationlat?: number | null;
+          locationlon?: number | null;
+          locationpostalcode?: string | null;
+          locationregion?: string | null;
+          locationstorenumber?: string | null;
+          merchantname?: string | null;
+          name?: string | null;
+          paymentchannel?: string | null;
+          paymentmetabyorderof?: string | null;
+          paymentmetapayee?: string | null;
+          paymentmetapayer?: string | null;
+          paymentmetapaymentmethod?: string | null;
+          paymentmetapaymentprocessor?: string | null;
+          paymentmetappdid?: string | null;
+          paymentmetareason?: string | null;
+          paymentmetareferencenumber?: string | null;
+          pending?: boolean | null;
+          pendingtransactionid?: string | null;
+          personalfinancecategorydetailed?: string | null;
+          personalfinancecategoryprimary?: string | null;
+          profiletype?: string | null;
+          sign?: number | null;
+          time?: string | null;
+          transactioncode?: string | null;
+          transactionid?: string | null;
+          unofficialcurrencycode?: string | null;
+          userid?: string | null;
+        };
+        Update: {
+          accountid?: string | null;
+          accountowner?: string | null;
+          amount?: number | null;
+          authorizeddate?: string | null;
+          authorizeddatetime?: string | null;
+          categories?: string[] | null;
+          categoryid?: string | null;
+          checknumber?: string | null;
+          currentdate?: string | null;
+          currentdatetime?: string | null;
+          id?: string | null;
+          isocurrencycode?: string | null;
+          linkid?: number | null;
+          locationaddress?: string | null;
+          locationcity?: string | null;
+          locationcountry?: string | null;
+          locationlat?: number | null;
+          locationlon?: number | null;
+          locationpostalcode?: string | null;
+          locationregion?: string | null;
+          locationstorenumber?: string | null;
+          merchantname?: string | null;
+          name?: string | null;
+          paymentchannel?: string | null;
+          paymentmetabyorderof?: string | null;
+          paymentmetapayee?: string | null;
+          paymentmetapayer?: string | null;
+          paymentmetapaymentmethod?: string | null;
+          paymentmetapaymentprocessor?: string | null;
+          paymentmetappdid?: string | null;
+          paymentmetareason?: string | null;
+          paymentmetareferencenumber?: string | null;
+          pending?: boolean | null;
+          pendingtransactionid?: string | null;
+          personalfinancecategorydetailed?: string | null;
+          personalfinancecategoryprimary?: string | null;
+          profiletype?: string | null;
+          sign?: number | null;
+          time?: string | null;
+          transactioncode?: string | null;
+          transactionid?: string | null;
+          unofficialcurrencycode?: string | null;
+          userid?: string | null;
+        };
+        Relationships: [];
       };
       user_invites: {
         Row: {
@@ -758,7 +1462,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "users";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       users: {
@@ -794,6 +1498,13 @@ export type Database = {
         };
         Relationships: [
           {
+            foreignKeyName: "fk_users_auth_users";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
+          {
             foreignKeyName: "users_id_fkey";
             columns: ["id"];
             isOneToOne: true;
@@ -806,7 +1517,7 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "teams";
             referencedColumns: ["id"];
-          }
+          },
         ];
       };
       users_on_team: {
@@ -845,31 +1556,201 @@ export type Database = {
             isOneToOne: false;
             referencedRelation: "users";
             referencedColumns: ["id"];
-          }
+          },
         ];
+      };
+      wrappers_fdw_stats: {
+        Row: {
+          bytes_in: number | null;
+          bytes_out: number | null;
+          create_times: number | null;
+          created_at: string;
+          fdw_name: string;
+          metadata: Json | null;
+          rows_in: number | null;
+          rows_out: number | null;
+          updated_at: string;
+        };
+        Insert: {
+          bytes_in?: number | null;
+          bytes_out?: number | null;
+          create_times?: number | null;
+          created_at?: string;
+          fdw_name: string;
+          metadata?: Json | null;
+          rows_in?: number | null;
+          rows_out?: number | null;
+          updated_at?: string;
+        };
+        Update: {
+          bytes_in?: number | null;
+          bytes_out?: number | null;
+          create_times?: number | null;
+          created_at?: string;
+          fdw_name?: string;
+          metadata?: Json | null;
+          rows_in?: number | null;
+          rows_out?: number | null;
+          updated_at?: string;
+        };
+        Relationships: [];
       };
     };
     Views: {
       [_ in never]: never;
     };
     Functions: {
-      amount_text: {
+      airtable_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      airtable_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      airtable_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
+      amount_text:
+      | {
         Args: {
           "": unknown;
         };
         Returns: string;
+      }
+      | {
+        Args: {
+          amount: number;
+        };
+        Returns: string;
       };
-      calculated_vat: {
+      auth0_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      auth0_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      auth0_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
+      big_query_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      big_query_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      big_query_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
+      calculated_vat:
+      | {
         Args: {
           "": unknown;
         };
         Returns: number;
+      }
+      | {
+        Args: {
+          amount: number;
+        };
+        Returns: number;
+      };
+      click_house_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      click_house_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      click_house_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
+      cognito_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      cognito_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      cognito_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
       };
       extract_product_names: {
         Args: {
           products_json: Json;
         };
         Returns: string;
+      };
+      firebase_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      firebase_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      firebase_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
       };
       generate_id: {
         Args: {
@@ -927,7 +1808,14 @@ export type Database = {
           value: number;
         }[];
       };
-      get_current_burn_rate: {
+      get_current_burn_rate:
+      | {
+        Args: {
+          team_id: string;
+        };
+        Returns: number;
+      }
+      | {
         Args: {
           team_id: string;
           currency: string;
@@ -958,7 +1846,16 @@ export type Database = {
           value: number;
         }[];
       };
-      get_runway: {
+      get_runway:
+      | {
+        Args: {
+          team_id: string;
+          date_from: string;
+          date_to: string;
+        };
+        Returns: number;
+      }
+      | {
         Args: {
           team_id: string;
           date_from: string;
@@ -999,7 +1896,14 @@ export type Database = {
           percentage: number;
         }[];
       };
-      get_total_balance: {
+      get_total_balance:
+      | {
+        Args: {
+          team_id: string;
+        };
+        Returns: number;
+      }
+      | {
         Args: {
           team_id: string;
           currency: string;
@@ -1042,11 +1946,55 @@ export type Database = {
         };
         Returns: string;
       };
+      insert_new_transactions_to_clickhouse: {
+        Args: Record<PropertyKey, never>;
+        Returns: undefined;
+      };
       is_fulfilled: {
         Args: {
           "": unknown;
         };
         Returns: boolean;
+      };
+      logflare_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      logflare_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      logflare_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
+      mssql_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      mssql_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      mssql_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
       };
       nanoid: {
         Args: {
@@ -1086,6 +2034,46 @@ export type Database = {
           full_name: string;
         }[];
       };
+      redis_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      redis_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      redis_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
+      s3_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      s3_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      s3_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
+      };
       set_limit: {
         Args: {
           "": number;
@@ -1107,6 +2095,26 @@ export type Database = {
           value: string;
         };
         Returns: string;
+      };
+      stripe_fdw_handler: {
+        Args: Record<PropertyKey, never>;
+        Returns: unknown;
+      };
+      stripe_fdw_meta: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          name: string;
+          version: string;
+          author: string;
+          website: string;
+        }[];
+      };
+      stripe_fdw_validator: {
+        Args: {
+          options: string[];
+          catalog: unknown;
+        };
+        Returns: undefined;
       };
       total_duration: {
         Args: {
@@ -1131,7 +2139,18 @@ export type Database = {
       bank_providers: "gocardless" | "plaid" | "teller";
       bankProviders: "gocardless" | "plaid" | "teller";
       inbox_status: "processing" | "pending" | "archived" | "new" | "deleted";
+      pricing_plan_interval: "day" | "week" | "month" | "year";
+      pricing_type: "one_time" | "recurring";
       reportTypes: "profit" | "revenue" | "burn_rate";
+      subscription_status:
+      | "trialing"
+      | "active"
+      | "canceled"
+      | "incomplete"
+      | "incomplete_expired"
+      | "past_due"
+      | "unpaid"
+      | "paused";
       teamRoles: "owner" | "member";
       trackerStatus: "in_progress" | "completed";
       transactionCategories:
@@ -1172,6 +2191,461 @@ export type Database = {
       };
     };
   };
+  storage: {
+    Tables: {
+      buckets: {
+        Row: {
+          allowed_mime_types: string[] | null;
+          avif_autodetection: boolean | null;
+          created_at: string | null;
+          file_size_limit: number | null;
+          id: string;
+          name: string;
+          owner: string | null;
+          owner_id: string | null;
+          public: boolean | null;
+          updated_at: string | null;
+        };
+        Insert: {
+          allowed_mime_types?: string[] | null;
+          avif_autodetection?: boolean | null;
+          created_at?: string | null;
+          file_size_limit?: number | null;
+          id: string;
+          name: string;
+          owner?: string | null;
+          owner_id?: string | null;
+          public?: boolean | null;
+          updated_at?: string | null;
+        };
+        Update: {
+          allowed_mime_types?: string[] | null;
+          avif_autodetection?: boolean | null;
+          created_at?: string | null;
+          file_size_limit?: number | null;
+          id?: string;
+          name?: string;
+          owner?: string | null;
+          owner_id?: string | null;
+          public?: boolean | null;
+          updated_at?: string | null;
+        };
+        Relationships: [];
+      };
+      migrations: {
+        Row: {
+          executed_at: string | null;
+          hash: string;
+          id: number;
+          name: string;
+        };
+        Insert: {
+          executed_at?: string | null;
+          hash: string;
+          id: number;
+          name: string;
+        };
+        Update: {
+          executed_at?: string | null;
+          hash?: string;
+          id?: number;
+          name?: string;
+        };
+        Relationships: [];
+      };
+      objects: {
+        Row: {
+          bucket_id: string | null;
+          created_at: string | null;
+          id: string;
+          last_accessed_at: string | null;
+          metadata: Json | null;
+          name: string | null;
+          owner: string | null;
+          owner_id: string | null;
+          path_tokens: string[] | null;
+          updated_at: string | null;
+          version: string | null;
+        };
+        Insert: {
+          bucket_id?: string | null;
+          created_at?: string | null;
+          id?: string;
+          last_accessed_at?: string | null;
+          metadata?: Json | null;
+          name?: string | null;
+          owner?: string | null;
+          owner_id?: string | null;
+          path_tokens?: string[] | null;
+          updated_at?: string | null;
+          version?: string | null;
+        };
+        Update: {
+          bucket_id?: string | null;
+          created_at?: string | null;
+          id?: string;
+          last_accessed_at?: string | null;
+          metadata?: Json | null;
+          name?: string | null;
+          owner?: string | null;
+          owner_id?: string | null;
+          path_tokens?: string[] | null;
+          updated_at?: string | null;
+          version?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "objects_bucketId_fkey";
+            columns: ["bucket_id"];
+            isOneToOne: false;
+            referencedRelation: "buckets";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      s3_multipart_uploads: {
+        Row: {
+          bucket_id: string;
+          created_at: string;
+          id: string;
+          in_progress_size: number;
+          key: string;
+          owner_id: string | null;
+          upload_signature: string;
+          version: string;
+        };
+        Insert: {
+          bucket_id: string;
+          created_at?: string;
+          id: string;
+          in_progress_size?: number;
+          key: string;
+          owner_id?: string | null;
+          upload_signature: string;
+          version: string;
+        };
+        Update: {
+          bucket_id?: string;
+          created_at?: string;
+          id?: string;
+          in_progress_size?: number;
+          key?: string;
+          owner_id?: string | null;
+          upload_signature?: string;
+          version?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "s3_multipart_uploads_bucket_id_fkey";
+            columns: ["bucket_id"];
+            isOneToOne: false;
+            referencedRelation: "buckets";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      s3_multipart_uploads_parts: {
+        Row: {
+          bucket_id: string;
+          created_at: string;
+          etag: string;
+          id: string;
+          key: string;
+          owner_id: string | null;
+          part_number: number;
+          size: number;
+          upload_id: string;
+          version: string;
+        };
+        Insert: {
+          bucket_id: string;
+          created_at?: string;
+          etag: string;
+          id?: string;
+          key: string;
+          owner_id?: string | null;
+          part_number: number;
+          size?: number;
+          upload_id: string;
+          version: string;
+        };
+        Update: {
+          bucket_id?: string;
+          created_at?: string;
+          etag?: string;
+          id?: string;
+          key?: string;
+          owner_id?: string | null;
+          part_number?: number;
+          size?: number;
+          upload_id?: string;
+          version?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "s3_multipart_uploads_parts_bucket_id_fkey";
+            columns: ["bucket_id"];
+            isOneToOne: false;
+            referencedRelation: "buckets";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "s3_multipart_uploads_parts_upload_id_fkey";
+            columns: ["upload_id"];
+            isOneToOne: false;
+            referencedRelation: "s3_multipart_uploads";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      can_insert_object: {
+        Args: {
+          bucketid: string;
+          name: string;
+          owner: string;
+          metadata: Json;
+        };
+        Returns: undefined;
+      };
+      extension: {
+        Args: {
+          name: string;
+        };
+        Returns: string;
+      };
+      filename: {
+        Args: {
+          name: string;
+        };
+        Returns: string;
+      };
+      foldername: {
+        Args: {
+          name: string;
+        };
+        Returns: string[];
+      };
+      get_size_by_bucket: {
+        Args: Record<PropertyKey, never>;
+        Returns: {
+          size: number;
+          bucket_id: string;
+        }[];
+      };
+      list_multipart_uploads_with_delimiter: {
+        Args: {
+          bucket_id: string;
+          prefix_param: string;
+          delimiter_param: string;
+          max_keys?: number;
+          next_key_token?: string;
+          next_upload_token?: string;
+        };
+        Returns: {
+          key: string;
+          id: string;
+          created_at: string;
+        }[];
+      };
+      list_objects_with_delimiter: {
+        Args: {
+          bucket_id: string;
+          prefix_param: string;
+          delimiter_param: string;
+          max_keys?: number;
+          start_after?: string;
+          next_token?: string;
+        };
+        Returns: {
+          name: string;
+          id: string;
+          metadata: Json;
+          updated_at: string;
+        }[];
+      };
+      operation: {
+        Args: Record<PropertyKey, never>;
+        Returns: string;
+      };
+      search: {
+        Args: {
+          prefix: string;
+          bucketname: string;
+          limits?: number;
+          levels?: number;
+          offsets?: number;
+          search?: string;
+          sortcolumn?: string;
+          sortorder?: string;
+        };
+        Returns: {
+          name: string;
+          id: string;
+          updated_at: string;
+          created_at: string;
+          last_accessed_at: string;
+          metadata: Json;
+        }[];
+      };
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
+    };
+  };
+  vault: {
+    Tables: {
+      secrets: {
+        Row: {
+          created_at: string;
+          description: string;
+          id: string;
+          key_id: string | null;
+          name: string | null;
+          nonce: string | null;
+          secret: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          description?: string;
+          id?: string;
+          key_id?: string | null;
+          name?: string | null;
+          nonce?: string | null;
+          secret: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          description?: string;
+          id?: string;
+          key_id?: string | null;
+          name?: string | null;
+          nonce?: string | null;
+          secret?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "secrets_key_id_fkey";
+            columns: ["key_id"];
+            isOneToOne: false;
+            referencedRelation: "decrypted_key";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "secrets_key_id_fkey";
+            columns: ["key_id"];
+            isOneToOne: false;
+            referencedRelation: "key";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "secrets_key_id_fkey";
+            columns: ["key_id"];
+            isOneToOne: false;
+            referencedRelation: "valid_key";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+    };
+    Views: {
+      decrypted_secrets: {
+        Row: {
+          created_at: string | null;
+          decrypted_secret: string | null;
+          description: string | null;
+          id: string | null;
+          key_id: string | null;
+          name: string | null;
+          nonce: string | null;
+          secret: string | null;
+          updated_at: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          decrypted_secret?: never;
+          description?: string | null;
+          id?: string | null;
+          key_id?: string | null;
+          name?: string | null;
+          nonce?: string | null;
+          secret?: string | null;
+          updated_at?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          decrypted_secret?: never;
+          description?: string | null;
+          id?: string | null;
+          key_id?: string | null;
+          name?: string | null;
+          nonce?: string | null;
+          secret?: string | null;
+          updated_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "secrets_key_id_fkey";
+            columns: ["key_id"];
+            isOneToOne: false;
+            referencedRelation: "key";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "secrets_key_id_fkey";
+            columns: ["key_id"];
+            isOneToOne: false;
+            referencedRelation: "decrypted_key";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "secrets_key_id_fkey";
+            columns: ["key_id"];
+            isOneToOne: false;
+            referencedRelation: "valid_key";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+    };
+    Functions: {
+      create_secret: {
+        Args: {
+          new_secret: string;
+          new_name?: string;
+          new_description?: string;
+          new_key_id?: string;
+        };
+        Returns: string;
+      };
+      update_secret: {
+        Args: {
+          secret_id: string;
+          new_secret?: string;
+          new_name?: string;
+          new_description?: string;
+          new_key_id?: string;
+        };
+        Returns: undefined;
+      };
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
+    };
+  };
 };
 
 type PublicSchema = Database[Extract<keyof Database, "public">];
@@ -1183,7 +2657,7 @@ export type Tables<
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
   ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
     Database[PublicTableNameOrOptions["schema"]]["Views"])
-  : never = never
+  : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
     Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
@@ -1207,7 +2681,7 @@ export type TablesInsert<
   | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
   ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
-  : never = never
+  : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
     Insert: infer I;
@@ -1228,7 +2702,7 @@ export type TablesUpdate<
   | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
   ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
-  : never = never
+  : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
     Update: infer U;
@@ -1249,7 +2723,7 @@ export type Enums<
   | { schema: keyof Database },
   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
   ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
-  : never = never
+  : never = never,
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]

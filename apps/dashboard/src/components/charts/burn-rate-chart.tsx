@@ -1,5 +1,5 @@
 import { calculateAvgBurnRate } from "@/utils/format";
-import { getBurnRate, getRunway } from "@midday/supabase/cached-queries";
+import { getBurnRate, getRunway } from "@solomon/supabase/cached-queries";
 import { Icons } from "@midday/ui/icons";
 import {
   Tooltip,

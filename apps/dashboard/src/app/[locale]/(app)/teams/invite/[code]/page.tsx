@@ -1,6 +1,5 @@
-import { UserMenu } from "@/components/user-menu";
-import { joinTeamByInviteCode } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { joinTeamByInviteCode } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import { Button } from "@midday/ui/button";
 import { Icons } from "@midday/ui/icons";
 import type { Metadata } from "next";
@@ -10,7 +9,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Join team | Midday",
+  title: "Join team | Solomon AI",
 };
 
 export default async function InviteCode({ params }) {

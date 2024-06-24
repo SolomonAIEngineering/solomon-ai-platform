@@ -10,26 +10,22 @@ function translations(locale: string, params?: any) {
         "notifications.transaction": `You have a new transaction of ${params?.amount} from ${params?.from}`,
         "notifications.transactions": `You have ${params?.numberOfTransactions} new transactions`,
         "transactions.subject": "New transactions",
-        "transactions.preview": `Hi ${params?.firstName}, You have ${
-          params?.numberOfTransactions
-        } ${
-          params?.numberOfTransactions > 1
+        "transactions.preview": `Hi ${params?.firstName}, You have ${params?.numberOfTransactions
+          } ${params?.numberOfTransactions > 1
             ? "new transactions"
             : "new transaction"
-        }`,
+          }`,
         "transactions.title1": "You have ",
-        "transactions.title2": `${params?.numberOfTransactions} ${
-          params?.numberOfTransactions > 1
+        "transactions.title2": `${params?.numberOfTransactions} ${params?.numberOfTransactions > 1
             ? "new transactions"
             : "new transaction"
-        }`,
+          }`,
         "transactions.description1": `Hi ${params?.firstName}`,
         "transactions.description2": "We found",
-        "transactions.description3": `${params?.numberOfTransactions} ${
-          params?.numberOfTransactions > 1
+        "transactions.description3": `${params?.numberOfTransactions} ${params?.numberOfTransactions > 1
             ? "new transactions"
             : "new transaction"
-        }`,
+          }`,
         "transactions.description4":
           "on your account, we will try to match those against receipts in your inbox for up to 45 days. Additionally, you can simply reply to this email with the receipts.",
         "transactions.button": "View transactions",
@@ -37,8 +33,8 @@ function translations(locale: string, params?: any) {
         "transactions.amount": "Amount",
         "transactions.date": "Date",
         "transactions.description": "Description",
-        "invite.subject": `${params?.invitedByName} invited you to the ${params?.teamName} team on Midday`,
-        "invite.preview": `Join ${params?.teamName} on Midday`,
+        "invite.subject": `${params?.invitedByName} invited you to the ${params?.teamName} team on Solomon AI`,
+        "invite.preview": `Join ${params?.teamName} on Solomon AI`,
         "invite.title1": "Join",
         "invite.title2": "on",
         "invite.link1": "has invited you to the",
@@ -57,26 +53,22 @@ function translations(locale: string, params?: any) {
         "notifications.transaction": `Du har en ny transaktion på ${params?.amount} från ${params?.from}`,
         "notifications.transactions": `Du har ${params?.numberOfTransactions} nya transaktioner`,
         "transactions.subject": "Nya transaktioner",
-        "transactions.preview": `Hej ${params?.firstName}, Vi hittade ${
-          params?.numberOfTransactions
-        } ${
-          params?.numberOfTransactions > 1
+        "transactions.preview": `Hej ${params?.firstName}, Vi hittade ${params?.numberOfTransactions
+          } ${params?.numberOfTransactions > 1
             ? "nya transaktioner"
             : "nya transaktion"
-        } .`,
+          } .`,
         "transactions.title1": "Du har ",
-        "transactions.title2": `${params?.numberOfTransactions} ${
-          params?.numberOfTransactions > 1
+        "transactions.title2": `${params?.numberOfTransactions} ${params?.numberOfTransactions > 1
             ? "nya transaktioner"
             : "nya transaktion"
-        }`,
+          }`,
         "transactions.description1": `Hej ${params?.firstName}`,
         "transactions.description2": "Vi hittade",
-        "transactions.description3": `${params?.numberOfTransactions} ${
-          params?.numberOfTransactions > 1
+        "transactions.description3": `${params?.numberOfTransactions} ${params?.numberOfTransactions > 1
             ? "nya transaktioner"
             : "nya transaktion"
-        }`,
+          }`,
         "transactions.description4":
           "på ditt konto som vi försöker matcha mot kvitton i din inkorg i upp till 45 dagar. Du kan också svara på detta email med dina kvitton.",
         "transactions.button": "Visa transaktioner",
@@ -86,8 +78,8 @@ function translations(locale: string, params?: any) {
         "transactions.amount": "Belopp",
         "transactions.date": "Datum",
         "transactions.description": "Beskrivning",
-        "invite.subject": `${params?.invitedByName} bjöd in dig till ${params?.teamName} på Midday`,
-        "invite.preview": `Gå med i ${params?.teamName} på Midday`,
+        "invite.subject": `${params?.invitedByName} bjöd in dig till ${params?.teamName} på Solomon AI`,
+        "invite.preview": `Gå med i ${params?.teamName} på Solomon AI`,
         "invite.title1": "Gå med",
         "invite.title2": "på",
         "invite.link1": "har bjudit in dig till",

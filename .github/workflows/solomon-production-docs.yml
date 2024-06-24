@@ -1,4 +1,4 @@
-name: Production Deployment - Documentation Site
+name: Solomon | Production Deployment - Documentation Site
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_DOCS }}
@@ -12,7 +12,6 @@ on:
       - apps/solomon/docs/**
       - packages/**
       - "!packages/email/**"
-      - packages/solomon/**
 jobs:
   deploy-production:
     runs-on: ubuntu-latest

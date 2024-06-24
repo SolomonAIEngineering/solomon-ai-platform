@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { VaultActivity } from "@/components/vault-activity";
 import { VaultProvider } from "@/store/vault/provider";
-import { getUser, getVault } from "@midday/supabase/cached-queries";
+import { getUser, getVault } from "@solomon/supabase/cached-queries";
 import { CreateFolderButton } from "./create-folder-button";
 import { DataTable } from "./data-table";
 import { EmptyTable } from "./empty-table";

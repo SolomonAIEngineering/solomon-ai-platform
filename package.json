@@ -5,8 +5,11 @@
     "packages/*",
     "apps/*",
     "packages/email/*",
-    "packages/solomon-ai/*",
-    "apps/solomon/*"
+    "packages/solomon/*",
+    "apps/solomon/*",
+    "packages/solomon/config/*",
+    "packages/apps/solomon/chrome-extension/apps/*",
+    "packages/apps/solomon/chrome-extension/packages/*"
   ],
   "scripts": {
     "build": "turbo build",
@@ -32,7 +35,7 @@
     "turbo": "2.0.4",
     "typescript": "^5.5.2"
   },
-  "packageManager": "bun@1.1.16",
+  "packageManager": "bun@1.1.12",
   "resolutions": {
     "jackspeak": "2.1.1"
   }

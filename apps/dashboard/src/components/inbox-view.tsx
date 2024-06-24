@@ -4,7 +4,7 @@ import { updateInboxAction } from "@/actions/inbox/update";
 import { searchAction } from "@/actions/search-action";
 import { InboxDetails } from "@/components/inbox-details";
 import { InboxList } from "@/components/inbox-list";
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import { TabsContent } from "@midday/ui/tabs";
 import { ToastAction } from "@midday/ui/toast";
 import { useToast } from "@midday/ui/use-toast";

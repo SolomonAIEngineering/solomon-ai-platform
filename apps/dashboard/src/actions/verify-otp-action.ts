@@ -1,7 +1,7 @@
 "use server";
 
 import { Cookies } from "@/utils/constants";
-import { createClient } from "@midday/supabase/server";
+import { createClient } from "@solomon/supabase/server";
 import { addYears } from "date-fns";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -16,15 +16,15 @@ export const verifyOtpAction = action(
     const options =
       type === "email"
         ? {
-            email,
-            token,
-            type: "email",
-          }
+          email,
+          token,
+          type: "email",
+        }
         : {
-            phone,
-            token,
-            type: "sms",
-          };
+          phone,
+          token,
+          type: "sms",
+        };
 
     await supabase.auth.verifyOtp(options);
 

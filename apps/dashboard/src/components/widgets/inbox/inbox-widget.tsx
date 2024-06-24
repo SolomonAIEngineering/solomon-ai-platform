@@ -1,8 +1,8 @@
 import { CopyInput } from "@/components/copy-input";
 import { getInboxEmail } from "@midday/inbox";
-import { getUser } from "@midday/supabase/cached-queries";
-import { getInboxQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { getInboxQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { inboxData } from "./data";
 import { InboxList } from "./inbox-list";
 
@@ -13,12 +13,12 @@ export async function InboxWidget({ filter, disabled }) {
   const { data } = disabled
     ? inboxData
     : await getInboxQuery(supabase, {
-        to: 15,
-        from: 0,
-        teamId: user.data.team_id,
-        done: filter === "done",
-        todo: filter === "todo",
-      });
+      to: 15,
+      from: 0,
+      teamId: user.data.team_id,
+      done: filter === "done",
+      todo: filter === "todo",
+    });
 
   if (!data?.length) {
     return (

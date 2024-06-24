@@ -6,8 +6,8 @@ import {
   getBurnRateQuery,
   getMetricsQuery,
   getRunwayQuery,
-} from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+} from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { Button } from "@midday/ui/button";
 import { Icons } from "@midday/ui/icons";
 import {
@@ -204,10 +204,10 @@ export default async function Report({ params }) {
           <p className="text-[#878787] text-sm">
             Powered by{" "}
             <a
-              href="https://midday.ai?utm_source=report"
+              href="https://solomon-ai.app?utm_source=report"
               className="text-black dark:text-white"
             >
-              Midday
+              Solomon AI
             </a>
           </p>
         </div>

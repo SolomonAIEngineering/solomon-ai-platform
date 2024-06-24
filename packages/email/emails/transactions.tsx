@@ -71,16 +71,16 @@ const defaultTransactions = [
 
 const baseUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://midday.ai/email"
+    ? "https://solomon-ai.app/email"
     : "http://localhost:3000/email";
 
 const baseAppUrl =
   process.env.VERCEL_ENV === "production"
-    ? "https://app.midday.ai"
+    ? "https://app.solomon-ai.app"
     : "http://localhost:3001";
 
 export const TransactionsEmail = ({
-  fullName = "Viktor Hofte",
+  fullName = "Solomon AI Team",
   transactions = defaultTransactions,
   locale = "en",
 }: TransactionsEmailEmailProps) => {
@@ -192,7 +192,7 @@ export const TransactionsEmail = ({
                         className={cn(
                           "text-[#121212]",
                           transaction?.category === "income" &&
-                            "!text-[#00C969]"
+                            "!text-[#00C969]",
                         )}
                       >
                         <div className="flex space-x-2 items-center">
@@ -213,7 +213,7 @@ export const TransactionsEmail = ({
                         className={cn(
                           "text-[14px] m-0 p-0 mt-1 pb-1 text-[#121212]",
                           transaction?.category === "income" &&
-                            "!text-[#00C969]"
+                            "!text-[#00C969]",
                         )}
                       >
                         {Intl.NumberFormat(locale, {
