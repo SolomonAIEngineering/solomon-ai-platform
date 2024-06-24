@@ -1,5 +1,5 @@
-import { createClient } from "@midday/supabase/client";
-import { getTransactionsQuery } from "@midday/supabase/queries";
+import { createClient } from "@solomon/supabase/client";
+import { getTransactionsQuery } from "@solomon/supabase/queries";
 import { Combobox } from "@midday/ui/combobox";
 import { format } from "date-fns";
 import { useState } from "react";
@@ -73,9 +73,9 @@ export function SelectTransaction({
 
   const selectedValue = selectedTransaction
     ? {
-        id: selectedTransaction.id,
-        name: selectedTransaction.name,
-      }
+      id: selectedTransaction.id,
+      name: selectedTransaction.name,
+    }
     : undefined;
 
   return (

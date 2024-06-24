@@ -1,0 +1,10 @@
+{
+  "extends": ["@solomon/tsconfig/base.json"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "noImplicitAny": false
+  },
+  "include": ["**/*.ts", "**/*.mjs", "**/*.js", "**/*.cjs"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,4 +1,4 @@
-import { getTransactions } from "@midday/supabase/cached-queries";
+import { getTransactions } from "@solomon/supabase/cached-queries";
 import { Skeleton } from "@midday/ui/skeleton";
 import { transactionList } from "./data";
 import { TransactionsItemList } from "./transactions-item-list";
@@ -37,12 +37,12 @@ export async function TransactionsList({ type, disabled }) {
   const transactions = disabled
     ? transactionList
     : await getTransactions({
-        to: 15,
-        from: 0,
-        filter: {
-          type,
-        },
-      });
+      to: 15,
+      from: 0,
+      filter: {
+        type,
+      },
+    });
 
   if (!transactions?.data?.length) {
     return (

@@ -8,8 +8,8 @@ export default create({
   fontCode: 'monospace',
 
   brandTitle: 'Midday | Storybook',
-  brandUrl: 'https://midday.ai',
-  brandImage: 'https://midday.ai/email/logo-footer-dark.png',
+  brandUrl: 'https://solomon-ai.app',
+  brandImage: 'https://solomon-ai.app/email/logo-footer-dark.png',
   brandTarget: '_self',
 
   //

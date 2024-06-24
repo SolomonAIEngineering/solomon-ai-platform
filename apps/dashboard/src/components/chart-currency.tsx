@@ -1,4 +1,4 @@
-import { getBankAccountsCurrencies } from "@midday/supabase/cached-queries";
+import { getBankAccountsCurrencies } from "@solomon/supabase/cached-queries";
 import { SelectChartCurrency } from "./select-chart-currency";
 
 type Props = {

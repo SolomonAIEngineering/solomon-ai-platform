@@ -12,6 +12,9 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import type { ReactElement } from "react";
 import { baseUrl } from "./sitemap";
+import Script from "next/script";
+import IntercomClientComponent from "@/components/intercom-client-component";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const PublicBetaBanner = dynamic(
   () =>
@@ -71,6 +74,20 @@ export default function Layout({ children }: { children: ReactElement }) {
         <main className="container mx-auto px-4 overflow-hidden md:overflow-visible">
           {children}
         </main>
+        <Script
+          strategy="afterInteractive"
+          id="intercom-settings"
+          dangerouslySetInnerHTML={{
+            __html: `
+                        window.intercomSettings = {
+                            api_base: "https://api-iam.intercom.io",
+                            app_id: "pezs7zbq",
+                        };
+                    `
+          }}
+        />
+        <IntercomClientComponent />
+        <SpeedInsights />
         <FooterCTA />
         <Footer />
         <Analytics />

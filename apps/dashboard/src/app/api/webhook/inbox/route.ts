@@ -5,7 +5,7 @@ import { setupAnalytics } from "@midday/events/server";
 import { getInboxIdFromEmail, inboxWebhookPostSchema } from "@midday/inbox";
 import { client as BackgroundClient, Events } from "@midday/jobs";
 import { client as RedisClient } from "@midday/kv";
-import { createClient } from "@midday/supabase/server";
+import { createClient } from "@solomon/supabase/server";
 import { nanoid } from "nanoid";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";

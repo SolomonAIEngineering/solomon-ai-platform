@@ -1,8 +1,8 @@
 "use server";
 
-import { getUser } from "@midday/supabase/cached-queries";
-import { updateTeam } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { updateTeam } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import {
   revalidatePath as revalidatePathFunc,
   revalidateTag,

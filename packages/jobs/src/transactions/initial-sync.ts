@@ -33,6 +33,7 @@ client.defineJob({
     });
 
     try {
+
       // NOTE: Schedule a background job per team_id
       await scheduler.register(teamId, {
         type: "interval",
@@ -47,7 +48,7 @@ client.defineJob({
     const { data: accountsData } = await supabase
       .from("bank_accounts")
       .select(
-        "id, team_id, account_id, bank_connection:bank_connection_id(provider, access_token)"
+        "id, team_id, account_id, bank_connection:bank_connection_id(provider, access_token)",
       )
       .eq("team_id", teamId)
       .eq("enabled", true)
@@ -66,6 +67,14 @@ client.defineJob({
         bankAccountId: account.id,
       });
 
+      await io.logger.info("Transactions obtained from provider", {
+        provider: account.bank_connection.provider,
+        teamId: account.team_id,
+        accountId: account.account_id,
+        bankAccountId: account.id,
+        transactions,
+      });
+
       // NOTE: We will get all the transactions at once for each account so
       // we need to guard against massive payloads
       await processPromisesBatch(transactions, BATCH_LIMIT, async (batch) => {
@@ -73,6 +82,14 @@ client.defineJob({
           ...rest,
           category_slug: category,
         }));
+
+        await io.logger.debug("Transactions ready for upsert", {
+          teamId: account.team_id,
+          accountId: account.account_id,
+          bankAccountId: account.id,
+          transactions: formatted,
+          batchSize: formatted.length,
+        });
 
         await supabase.from("transactions").upsert(formatted, {
           onConflict: "internal_id",

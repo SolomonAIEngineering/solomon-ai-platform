@@ -1,9 +1,9 @@
 import { createBankAccountAction } from "@/actions/create-bank-account-action";
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import {
   getCurrentUserTeamQuery,
   getTeamBankAccountsQuery,
-} from "@midday/supabase/queries";
+} from "@solomon/supabase/queries";
 import { ComboboxDropdown } from "@midday/ui/combobox-dropdown";
 import { useAction } from "next-safe-action/hooks";
 import { useEffect, useState } from "react";
@@ -74,9 +74,8 @@ export function SelectAccount({ placeholder, onChange, value }: Props) {
       renderSelectedItem={(selectedItem) => {
         return (
           <TransactionBankAccount
-            name={`${selectedItem.label} ${
-              selectedItem.currency ? `(${selectedItem.currency})` : ""
-            }`}
+            name={`${selectedItem.label} ${selectedItem.currency ? `(${selectedItem.currency})` : ""
+              }`}
             logoUrl={selectedItem.logo}
           />
         );

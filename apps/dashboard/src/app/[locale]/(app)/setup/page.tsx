@@ -4,14 +4,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Setup account | Midday",
+  title: "Setup account | Solomon AI",
 };
 
 export default function Page() {
   return (
     <div>
       <div className="absolute left-5 top-4 md:left-10 md:top-10">
-        <Link href="https://midday.ai">
+        <Link href="https://solomon-ai.app">
           <Icons.Logo />
         </Link>
       </div>

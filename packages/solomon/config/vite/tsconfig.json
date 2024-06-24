@@ -1,0 +1,14 @@
+{
+  "extends": ["@solomon/tsconfig/base.json"],
+  "compilerOptions": {
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "incremental": true, // Add the 'incremental' option
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noImplicitAny": false
+  },
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["dist", "node_modules"]
+}

@@ -18,7 +18,7 @@ client.defineJob({
     const { data: accountsData, error: accountsError } = await supabase
       .from("bank_accounts")
       .select(
-        "id, team_id, account_id, bank_connection:bank_connection_id(provider, access_token)"
+        "id, team_id, account_id, bank_connection:bank_connection_id(provider, access_token)",
       )
       .eq("team_id", teamId)
       .eq("enabled", true)
@@ -50,7 +50,7 @@ client.defineJob({
       } catch (error) {
         await io.logger.error(
           `Update Account Balance Error. Provider: ${account.bank_connection.provider} Account id: ${account.account_id}`,
-          error
+          error as Error,
         );
       }
 

@@ -1,8 +1,8 @@
 "use server";
 
-import { getUser } from "@midday/supabase/cached-queries";
-import { getInboxSearchQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { getInboxSearchQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { addDays, isWithinInterval } from "date-fns";
 import { action } from "./safe-action";
 import { searchSchema } from "./schema";

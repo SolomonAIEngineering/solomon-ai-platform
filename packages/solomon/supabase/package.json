@@ -1,5 +1,5 @@
 {
-  "name": "@midday/solomon-supabase",
+  "name": "@solomon/supabase",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "login": "supabase login",
-    "db:generate": "supabase gen types typescript --project-id $PROJECT_ID --schema public > src/types/db.ts",
+    "db:generate": "supabase gen types typescript --project-id $PROJECT_ID --schema public --schema storage --schema cron --schema vault > src/types/db.ts",
     "supabase:start": "npx supabase start",
     "supabase:stop": "npx supabase stop",
     "supabase:status": "npx supabase status",

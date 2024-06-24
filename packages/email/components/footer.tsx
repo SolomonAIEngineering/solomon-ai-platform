@@ -21,7 +21,7 @@ export function Footer({ baseUrl }: Props) {
       <br />
 
       <Text className="text-[21px] font-regular">
-        Run your business smarter.
+        Proactive Stress Testing For Your Practice.
       </Text>
 
       <br />
@@ -39,7 +39,7 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/bOp4NOx"
+                href="https://solomon-ai.app"
               >
                 Overview
               </Link>
@@ -47,7 +47,7 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/VFcNsmQ"
+                href="https://solomon-ai.app/pricing"
               >
                 Inbox
               </Link>
@@ -55,7 +55,7 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/uA06kWO"
+                href="https://solomon-ai.app/story"
               >
                 Vault
               </Link>
@@ -63,16 +63,7 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/x7Fow9L"
-              >
-                Tracker
-              </Link>
-            </Row>
-
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/fkYXc95"
+                href="https://solomon-ai.app/updates"
               >
                 Invoice
               </Link>
@@ -90,7 +81,7 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/E24P3oY"
+                href="https://solomon-ai.app/download"
               >
                 Engine
               </Link>
@@ -99,7 +90,7 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://midday.ai/download"
+                href="https://solomon-ai.app/feature-request"
               >
                 Download
               </Link>
@@ -110,36 +101,12 @@ export function Footer({ baseUrl }: Props) {
         columnTwoContent={
           <Section className="text-left p-0 m-0">
             <Row>
-              <Text className="font-medium">Resources</Text>
+              <Text className="font-medium">Terms</Text>
             </Row>
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/fhEy5CL"
-              >
-                Homepage
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://git.new/midday"
-              >
-                Github
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/ZrhEMbR"
-              >
-                Support
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/rofdWKi"
+                href="https://solomon-ai.app/terms"
               >
                 Terms of service
               </Link>
@@ -147,27 +114,9 @@ export function Footer({ baseUrl }: Props) {
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/TJIL5mQ"
+                href="https://solomon-ai.app/policy"
               >
                 Privacy policy
-              </Link>
-            </Row>
-
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/IQ1kcN0"
-              >
-                Branding
-              </Link>
-            </Row>
-
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/x5ohOs7"
-              >
-                Feature Request
               </Link>
             </Row>
           </Section>
@@ -176,38 +125,30 @@ export function Footer({ baseUrl }: Props) {
         columnThreeContent={
           <Section className="text-left p-0 m-0">
             <Row>
-              <Text className="font-medium">Company</Text>
+              <Text className="font-medium">Resources</Text>
             </Row>
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/186swoH"
+                href="https://solomon-ai.notion.site/999bf0b14a4449a2a91fb0ce8c3c9e5e?v=7485a25a52214a1db111b550d4c18097&pvs=74"
               >
-                Story
+                Roadmap
               </Link>
             </Row>
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/QWyX8Um"
+                href="https://github.com/SolomonAIEngineering/solomon-ai-platform"
               >
-                Updates
+                Github
               </Link>
             </Row>
             <Row className="mb-1.5">
               <Link
                 className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/Dd7M8cl"
+                href="https://app.solomon-ai.app/account/support"
               >
-                Open startup
-              </Link>
-            </Row>
-            <Row className="mb-1.5">
-              <Link
-                className="text-[#707070] text-[14px]"
-                href="https://go.midday.ai/M2Hv420"
-              >
-                OSS Friends
+                Support
               </Link>
             </Row>
           </Section>
@@ -217,80 +158,48 @@ export function Footer({ baseUrl }: Props) {
 
       <br />
       <br />
-
-      <Row>
-        <Column className="align-middle w-[40px]">
-          <Link href="https://go.midday.ai/lS72Toq">
-            <Img
-              src={`${baseUrl}/x.png`}
-              width="22"
-              height="22"
-              alt="Midday on X"
-            />
-          </Link>
-        </Column>
-        <Column className="align-middle w-[40px]">
-          <Link href="https://go.midday.ai/7rhA3rz">
-            <Img
-              src={`${baseUrl}/producthunt.png`}
-              width="22"
-              height="22"
-              alt="Midday on Producthunt"
-            />
-          </Link>
-        </Column>
-
-        <Column className="align-middle w-[40px]">
-          <Link href="https://go.midday.ai/anPiuRx">
-            <Img
-              src={`${baseUrl}/discord.png`}
-              width="22"
-              height="22"
-              alt="Midday on Discord"
-            />
-          </Link>
-        </Column>
-
-        <Column className="align-middle">
-          <Link href="https://go.midday.ai/Ct3xybK">
-            <Img
-              src={`${baseUrl}/linkedin.png`}
-              width="22"
-              height="22"
-              alt="Midday on LinkedIn"
-            />
-          </Link>
-        </Column>
-      </Row>
-
       <br />
       <br />
 
       <Row>
         <Text className="text-[#B8B8B8] text-xs">
-          Midday Labs AB - Torsgatan 59 113 37, Stockholm, Sweden.
+          Solomon AI
         </Text>
       </Row>
 
-      <Row>
-        <Link
-          className="text-[#707070] text-[14px]"
-          href="https://app.midday.ai/settings/notifications"
-          title="Unsubscribe"
-        >
-          Notification preferences
-        </Link>
-      </Row>
+      {unsubscribeLink && (
+        <Row>
+          <Link
+            className="text-[#707070] text-[14px]"
+            href={unsubscribeLink}
+            title="Unsubscribe"
+          >
+            Unsubscribe
+          </Link>
+        </Row>
+      )}
+
+      {!unsubscribeLink && (
+        <Row>
+          <Link
+            className="text-[#707070] text-[14px]"
+            href="https://app.solomon-ai.app/settings/notifications"
+            title="Unsubscribe"
+          >
+            Notification preferences
+          </Link>
+        </Row>
+      )}
 
       <br />
       <br />
 
       <Row>
-        <Link href="https://go.midday.ai/FZwOHud">
+        <Link href="https://solomon-ai.app">
           <Img
             src={`${baseUrl}/logo-footer.png`}
             width="100"
-            alt="Midday"
+            alt="Solomon AI"
             className="block"
           />
         </Link>

@@ -1,6 +1,6 @@
 import { updateSubscriberPreferenceAction } from "@/actions/update-subscriber-preference-action";
 import { getSubscriberPreferences } from "@midday/notification";
-import { getUser } from "@midday/supabase/cached-queries";
+import { getUser } from "@solomon/supabase/cached-queries";
 import { Skeleton } from "@midday/ui/skeleton";
 import { NotificationSetting } from "./notification-setting";
 

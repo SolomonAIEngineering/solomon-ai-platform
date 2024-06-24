@@ -1,4 +1,4 @@
-import { createClient } from "@midday/supabase/client";
+import { createClient } from "@solomon/supabase/client";
 import {
   globalShortcut,
   nativeWindow,

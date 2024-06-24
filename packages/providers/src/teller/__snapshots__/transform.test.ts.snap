@@ -2,6 +2,7 @@
 
 exports[`Transform pending transaction 1`] = `
 {
+  "account_id": "acc_os41qe3a66ks2djhss000",
   "amount": 83.62,
   "balance": null,
   "bank_account_id": "123",
@@ -19,6 +20,7 @@ exports[`Transform pending transaction 1`] = `
 
 exports[`Transform card payment transaction 1`] = `
 {
+  "account_id": "acc_os41qe3a66ks2djhss000",
   "amount": -68.9,
   "balance": "83431.46",
   "bank_account_id": "123",
@@ -36,6 +38,7 @@ exports[`Transform card payment transaction 1`] = `
 
 exports[`Transform income transaction 1`] = `
 {
+  "account_id": "acc_os41qe3a66ks2djhss000",
   "amount": -20.21,
   "balance": "83296.40",
   "bank_account_id": "123",
@@ -53,6 +56,7 @@ exports[`Transform income transaction 1`] = `
 
 exports[`Transform type transfer 1`] = `
 {
+  "account_id": "acc_os41qe3a66ks2djhss000",
   "amount": -37.99,
   "balance": "85897.25",
   "bank_account_id": "123",

@@ -1,7 +1,7 @@
 import { AI } from "@/actions/ai/chat";
 import { Assistant } from "@/components/assistant";
-import { getUser } from "@midday/supabase/cached-queries";
-import { nanoid } from "nanoid";
+import { getUser } from "@solomon/supabase/cached-queries";
+import { nanoid } from "ai";
 
 export default async function Page() {
   const user = await getUser();

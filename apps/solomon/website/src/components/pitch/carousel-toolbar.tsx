@@ -36,13 +36,13 @@ const popupCenter = ({ url, title, w, h }) => {
   const width = window.innerWidth
     ? window.innerWidth
     : document.documentElement.clientWidth
-    ? document.documentElement.clientWidth
-    : screen.width;
+      ? document.documentElement.clientWidth
+      : screen.width;
   const height = window.innerHeight
     ? window.innerHeight
     : document.documentElement.clientHeight
-    ? document.documentElement.clientHeight
-    : screen.height;
+      ? document.documentElement.clientHeight
+      : screen.height;
 
   const systemZoom = width / window.screen.availWidth;
   const left = (width - w) / 2 / systemZoom + dualScreenLeft;
@@ -70,7 +70,7 @@ export function CarouselToolbar({ views }: Props) {
 
   const handleOnShare = () => {
     const popup = popupCenter({
-      url: "https://twitter.com/intent/tweet?text=Check this pitch deck https://midday.ai/pitch @middayai",
+      url: "https://twitter.com/intent/tweet?text=Check this pitch deck https://solomon-ai.app/pitch @middayai",
       title: "Share",
       w: 800,
       h: 400,
@@ -198,7 +198,7 @@ export function CarouselToolbar({ views }: Props) {
           </DialogDescription>
 
           <div className="grid gap-6 py-4">
-            <CopyInput value="https://midday.ai/pitch" />
+            <CopyInput value="https://solomon-ai.app/pitch" />
             <Button
               className="w-full flex items-center space-x-2 h-10"
               onClick={handleOnShare}

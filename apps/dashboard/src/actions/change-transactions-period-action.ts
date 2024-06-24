@@ -1,7 +1,7 @@
 "use server";
 
 import { Cookies } from "@/utils/constants";
-import { getUser } from "@midday/supabase/cached-queries";
+import { getUser } from "@solomon/supabase/cached-queries";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { action } from "./safe-action";

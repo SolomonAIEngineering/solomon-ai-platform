@@ -1,6 +1,6 @@
 import type { MutableAIState } from "@/actions/ai/types";
-import { getTransactions } from "@midday/supabase/cached-queries";
-import { nanoid } from "nanoid";
+import { getTransactions } from "@solomon/supabase/cached-queries";
+import { nanoid } from "ai";
 import { z } from "zod";
 import { TransactionsUI } from "./ui/transactions-ui";
 

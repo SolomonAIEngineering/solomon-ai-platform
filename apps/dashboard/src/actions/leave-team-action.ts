@@ -2,9 +2,9 @@
 
 import { LogEvents } from "@midday/events/events";
 import { setupAnalytics } from "@midday/events/server";
-import { getTeamMembers, getUser } from "@midday/supabase/cached-queries";
-import { leaveTeam } from "@midday/supabase/mutations";
-import { createClient } from "@midday/supabase/server";
+import { getTeamMembers, getUser } from "@solomon/supabase/cached-queries";
+import { leaveTeam } from "@solomon/supabase/mutations";
+import { createClient } from "@solomon/supabase/server";
 import {
   revalidatePath as revalidatePathFunc,
   revalidateTag,

@@ -1,5 +1,5 @@
-import { updateSession } from "@midday/supabase/middleware";
-import { createClient } from "@midday/supabase/server";
+import { updateSession } from "@solomon/supabase/middleware";
+import { createClient } from "@solomon/supabase/server";
 import { createI18nMiddleware } from "next-international/middleware";
 import { type NextRequest, NextResponse } from "next/server";
 
@@ -36,9 +36,8 @@ export async function middleware(request: NextRequest) {
     !newUrl.pathname.includes("/report") &&
     !newUrl.pathname.includes("/setup")
   ) {
-    const encodedSearchParams = `${newUrl.pathname.substring(1)}${
-      newUrl.search
-    }`;
+    const encodedSearchParams = `${newUrl.pathname.substring(1)}${newUrl.search
+      }`;
 
     const url = new URL("/login", request.url);
 

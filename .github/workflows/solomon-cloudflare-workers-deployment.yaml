@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - apps/solomon/backend/cloudflare/**
+      - apps/solomon/**
 
 jobs:
   deploy:

@@ -1,6 +1,6 @@
 import { TrackerGraph } from "@/components/tracker-graph/tracker-graph";
-import { getTrackerRecordsByRangeQuery } from "@midday/supabase/queries";
-import { createClient } from "@midday/supabase/server";
+import { getTrackerRecordsByRangeQuery } from "@solomon/supabase/queries";
+import { createClient } from "@solomon/supabase/server";
 import { Button } from "@midday/ui/button";
 import { endOfMonth, formatISO, startOfMonth, subMonths } from "date-fns";
 import type { Metadata } from "next";
@@ -96,10 +96,10 @@ export default async function ProjectReport({ params, searchParams }) {
           <p className="text-[#878787] text-sm">
             Powered by{" "}
             <a
-              href="https://midday.ai?utm_source=project"
+              href="https://solomon-ai.app?utm_source=project"
               className="text-black dark:text-white"
             >
-              Midday
+              Solomon AI
             </a>
           </p>
         </div>
